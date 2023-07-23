@@ -38,14 +38,15 @@ const carouselItem = defineAsyncComponent(() => {
 </script>
 
 <template>
-    <div :id="id" class="carousel carousel-dark slide" :class="carouselClass" data-bs-ride="carousel">
+    <div :id="id" v-if="slide = nSlide(withRows, data.length, nCols)" class="carousel carousel-dark slide"
+        :class="carouselClass" data-bs-ride="carousel">
         <div class="carousel-indicators" v-if="withIndicators">
-            <Indicator v-for="n in nSlide(withRows, data.length, nCols)" :key="n" :class="{ active: isActive(n) }"
-                :carouselId="id" :indexSlide="n - 1" :ariaCurrent="isAriaCurrent(n)" :ariaLabel="`Slide ${n - 1}`" />
+            <Indicator v-for="n in slide" :key="n" :class="{ active: isActive(n) }" :carouselId="id" :indexSlide="n - 1"
+                :ariaCurrent="isAriaCurrent(n)" :ariaLabel="`Slide ${n - 1}`" />
         </div>
         <div class="carousel-inner">
-            <div v-for="n in nSlide(withRows, data.length, nCols)" :key="n" class="carousel-item"
-                :class="{ active: isActive(n) }" :data-bs-interval="dataBsInterval">
+            <div v-for="n in slide" :key="n" class="carousel-item" :class="{ active: isActive(n) }"
+                :data-bs-interval="dataBsInterval">
                 <template v-if="withRows">
                     <div class="row pb-5 pt-5 px-5 py-5">
                         <div v-for="nCol in nCols" :key="nCol" :class="colClass">
