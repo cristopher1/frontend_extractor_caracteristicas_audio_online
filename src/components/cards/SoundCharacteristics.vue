@@ -3,6 +3,7 @@
         cardTipe: 'string',
         cardTitle: 'string',
         cardDescription: 'string',
+        imgSrc: 'string',
         soundSrc: 'string',
         soundFileExt: 'string',
     })
@@ -10,7 +11,7 @@
 
 <template>
     <div class="card h-100 shadow border-0">
-        <img class="card-img-top" src="" height="240" />
+        <img class="card-img-top" :src="imgSrc" height="240" />
         <div class="card-body p-4">
             <div class="badge bg-primary bg-gradient rounded-pill mb-2"> {{ cardTipe }} </div>
             <a class="text-decoration-none link-dark stretched-link"><h5 class="card-title mb-3"> {{ cardTitle }} </h5></a>
