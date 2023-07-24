@@ -7,7 +7,7 @@
 
 <template>
     <!-- Header-->
-    <header class="bg-primary bg-gradient text-white pb-5 pt-5">
+    <header class="bg-primary bg-gradient text-white">
         <div class="container px-4 text-center">
             <h1 class="fw-bolder">Información general</h1>
             <p class="lead">
@@ -91,3 +91,7 @@
         </div>
     </section>
 </template>
+
+<style scoped>
+    @import '../assets/css/views/description.css';
+</style>
