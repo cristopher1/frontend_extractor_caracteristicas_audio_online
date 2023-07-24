@@ -50,5 +50,5 @@
 </template>
 
 <style scoped>
-    @import '../../assets/css/login.css';
+    @import '../../assets/css/forms/login.css';
 </style>
