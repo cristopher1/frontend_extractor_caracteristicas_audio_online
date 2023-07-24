@@ -1,3 +1,12 @@
+<script setup>
+    import { RouterLink } from 'vue-router'
+
+    const props = defineProps({
+        toSignUpUrl: 'Object',
+        titleSignUpButton: 'string'
+    })
+</script>
+
 <template>
     <div class="container mt-5 mb-5 pt-5 pb-5">
         <div class="row justify-content-center">
@@ -24,13 +33,13 @@
                             </form>
                         </div>
                     </div>
-                    <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                    <div class="card text-white bg-primary py-5 d-md-down-none">
                         <div class="card-body text-center">
                             <div>
                                 <h2>¿Estás registrado?</h2>
                                 <p>Crea una cuenta e inicia sesión para acceder a las funcionalidades de la aplicación.</p>
-                                <a href="{% url 'inicio' %}#registrarse" class="btn btn-primary active mt-3">Registrarme
-                                    ahora</a>
+                                <RouterLink :to="toSignUpUrl" class="btn btn-primary active mt-3"> {{ titleSignUpButton
+                                }} </RouterLink>
                             </div>
                         </div>
                     </div>
