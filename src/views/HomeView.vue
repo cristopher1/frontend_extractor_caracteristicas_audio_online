@@ -4,15 +4,18 @@ import GenericFeature from '../components/features/GenericFeature.vue'
 import Carousel from '../components/carousel/Carousel.vue';
 import SignUp from '../components/forms/SignUp.vue'
 import { urlInformationName, urlSignInName } from '../lib/urlName'
-import spectrogramZumbidos38SegImg from '../assets/img/espectrograma_zumbidos_abeja_38_seg.png'
-import melSpectrogramZumbidos38SegImg from '../assets/img/espectrograma_mel_zumbidos_abeja_38_seg.png'
-import mfcc13Zumbidos38SegImg from '../assets/img/mfcc13_zumbidos_abeja_38_seg.png'
-import serieTiempoLadrido4SegImg from '../assets/img/serie_tiempo_ladrido_4_seg.png'
-import spectrogramLadrido4SegImg from '../assets/img/espectrograma_ladrido_4_seg.png'
-import melSpectrogramLadrido4SegImg from '../assets/img/espectrograma_mel_ladrido_4_seg.png'
-import serieTiempoAcordeGuitarra4SegImg from '../assets/img/serie_tiempo_acordes_guitarra_4_seg.png'
-import mfcc20SerieTiempoAcordeGuitarra4SegImg from '../assets/img/mfcc20_serie_tiempo_acordes_guitarra_4_seg.png'
-import mfcc20MelAcordeGuitarra4SegImg from '../assets/img/mfcc20_mel_acordes_guitarra_4_seg.png'
+import {
+  characteristicsImg,
+  spectrogramZumbidos38SegImg,
+  melSpectrogramZumbidos38SegImg,
+  mfcc13Zumbidos38SegImg,
+  serieTiempoLadrido4SegImg,
+  spectrogramLadrido4SegImg,
+  melSpectrogramLadrido4SegImg,
+  serieTiempoAcordeGuitarra4SegImg,
+  mfcc20SerieTiempoAcordeGuitarra4SegImg,
+  mfcc20MelAcordeGuitarra4SegImg
+} from '../assets/img/views/home'
 
 const toInformation = { name: urlInformationName }
 const toSignIn = { name: urlSignInName }

@@ -1,5 +1,6 @@
 <script setup>
   import GenericFeature from '../components/features/GenericFeature.vue';
+  import { autorImg } from '../assets/img/views/contacto'
 </script>
 
 <template>
@@ -13,7 +14,7 @@
           <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
               <div class="col mb-5 mb-5 mb-xl-0">
                   <div class="text-center">
-                      <img class="img-fluid rounded-circle mb-4 px-4" src="../assets/img/autor.png" />
+                      <img class="img-fluid rounded-circle mb-4 px-4" :src="autorImg" />
                       <h5 class="fw-bolder">Cristopher Jiménez</h5>
                       <div class="fst-italic text-muted">Desarrollador &middot; Equipo 11</div>
                   </div>
