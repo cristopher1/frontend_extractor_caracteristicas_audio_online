@@ -12,20 +12,32 @@ const router = createRouter({
     {
       path: '/contacto',
       name: 'contacto',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/ContactoView.vue')
     },
     {
       path: '/informacion',
       name: 'informacion',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/DescripcionView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
     }
   ],
+  scrollBehavior (to, from, savedPosition) {
+    console.log(savedPosition)
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth'
+      }
+    } else if (savedPosition) {
+      return savedPosition
+    } else {
+      return { left: 0, top: 0}
+    }
+  }
 })
 
 export default router
