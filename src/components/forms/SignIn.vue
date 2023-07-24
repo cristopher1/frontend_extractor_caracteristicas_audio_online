@@ -48,3 +48,7 @@
         </div>
     </div>
 </template>
+
+<style scoped>
+    @import '../../assets/css/login.css';
+</style>
