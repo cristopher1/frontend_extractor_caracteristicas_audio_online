@@ -1,4 +1,8 @@
 <script setup>
+    import { RouterLink } from 'vue-router'
+    import { urlSignInName } from '../lib/urlName'
+
+    const toSignIn = { name: urlSignInName }
 </script>
 
 <template>
@@ -10,7 +14,7 @@
                 Esta sección lo ayudará a saber más sobre el proyecto y su modo de uso. Presione "comenzar"
                 para iniciar sesión.
             </p>
-            <a class="btn btn-lg btn-light" href="">Comenzar</a>
+            <RouterLink class="btn btn-lg btn-light" :to="toSignIn">Comenzar</RouterLink>
         </div>
     </header>
     <!-- About section-->

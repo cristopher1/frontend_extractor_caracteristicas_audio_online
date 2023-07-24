@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router'
 import GenericFeature from '../components/features/GenericFeature.vue'
 import Carousel from '../components/carousel/Carousel.vue';
+import SignUp from '../components/forms/SignUp.vue'
+import { urlInformationName, urlSignInName } from '../lib/urlName'
 import spectrogramZumbidos38SegImg from '../assets/img/espectrograma_zumbidos_abeja_38_seg.png'
 import melSpectrogramZumbidos38SegImg from '../assets/img/espectrograma_mel_zumbidos_abeja_38_seg.png'
 import mfcc13Zumbidos38SegImg from '../assets/img/mfcc13_zumbidos_abeja_38_seg.png'
@@ -12,8 +14,9 @@ import serieTiempoAcordeGuitarra4SegImg from '../assets/img/serie_tiempo_acordes
 import mfcc20SerieTiempoAcordeGuitarra4SegImg from '../assets/img/mfcc20_serie_tiempo_acordes_guitarra_4_seg.png'
 import mfcc20MelAcordeGuitarra4SegImg from '../assets/img/mfcc20_mel_acordes_guitarra_4_seg.png'
 
+const toInformation = { name: urlInformationName }
+const toSignIn = { name: urlSignInName }
 
-const toInformacion = { name: 'informacion' }
 const characteristicResults = [
   {
     cardTipe: "Imagen",
@@ -41,7 +44,7 @@ const characteristicResults = [
   },
   {
     cardTipe: "Imagen",
-    cardTitle:"Serie de tiempo",
+    cardTitle: "Serie de tiempo",
     cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
     imgSrc: serieTiempoLadrido4SegImg,
     soundSrc: "Generado a partir de ladridos de perro",
@@ -101,8 +104,8 @@ const characteristicResults = [
             <p class="lead fw-normal text-white-50 mb-4">Extraiga de manera sencilla información relevante de sus archivos
               de audios</p>
             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-              <a class="btn btn-primary btn-lg px-4 me-sm-3" href="">Comenzar</a>
-              <RouterLink class="btn btn-outline-light btn-lg px-4" :to="toInformacion">Ver más</RouterLink>
+              <RouterLink class="btn btn-primary btn-lg px-4 me-sm-3" :to="toSignIn">Comenzar</RouterLink>
+              <RouterLink class="btn btn-outline-light btn-lg px-4" :to="toInformation">Ver más</RouterLink>
             </div>
           </div>
         </div>
@@ -111,8 +114,31 @@ const characteristicResults = [
       </div>
     </div>
   </header>
+  <!-- Characteristics results preview section-->
+  <section>
+    <div class="container px-5 my-5">
+      <div class="row gx-5 justify-content-center">
+        <div class="col-lg-8 col-xl-6">
+          <div class="text-center">
+            <h2 class="fw-bolder">Características extraídas</h2>
+            <p class="lead fw-normal text-muted mb-5">De manera sencilla podrá tener resultados como los siguientes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row gx-5">
+        <Carousel id="characteristics-result" pathDirectoryCarouselItem="cards"
+          nameFileCarouselItem="SoundCharacteristics" :withIndicators="true" :withCarouselControl="true" :withRows="true"
+          :data="characteristicResults" :dataBsInterval="4000" :nCols="3" colClass="col" carouselClass="carousel-fade" />
+      </div>
+    </div>
+  </section>
+  <!-- Call to action-->
+  <section id="sign-up" class="bg-primary bg-gradient p-4 p-sm-5 py-5 mx-3">
+    <SignUp title="Registrate." description="Comience a usar las funcionalidades de la aplicación."
+      titleButtonSubmit="Registrame" />
+  </section>
   <!-- Features section-->
-  <section class="py-5" id="features">
+  <section id="features" class="px-5 py-5">
     <div class="container px-5 my-5">
       <div class="row gx-5">
         <div class="col-lg-4 mb-5 mb-lg-0">
@@ -140,45 +166,6 @@ const characteristicResults = [
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- Blog preview section-->
-  <section class="py-5">
-    <div class="container px-5 my-5">
-      <div class="row gx-5 justify-content-center">
-        <div class="col-lg-8 col-xl-6">
-          <div class="text-center">
-            <h2 class="fw-bolder">Características extraídas</h2>
-            <p class="lead fw-normal text-muted mb-5">De manera sencilla podrá tener resultados como los siguientes.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row gx-5">
-        <Carousel id="characteristics-result" pathDirectoryCarouselItem="cards" nameFileCarouselItem="SoundCharacteristics"
-        :withIndicators="true" :withCarouselControl="true" :withRows="true" :data="characteristicResults"
-        :dataBsInterval="4000" :nCols="3" colClass="col" carouselClass="carousel-fade"/>
-      </div>
-      <!-- Call to action-->
-      <a name="registrarse"></a>
-      <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
-        <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
-          <div class="mb-4 mb-xl-0">
-            <div class="fs-3 fw-bold text-white">Registrate.</div>
-            <div class="text-white-50">Comience a usar las funcionalidades de la aplicación.</div>
-          </div>
-          <div class="ms-xl-4">
-            <form class="text-center text-white" method="POST" action="">
-              <div class="mb-3">
-                <input type="email" class="form-control" placeholder="Correo electrónico" id="correo" name="email">
-              </div>
-              <div class="mb-3">
-                <input type="password" class="form-control" placeholder="Contraseña" id="contrasenna" name="password">
-              </div>
-              <button class="btn btn-outline-light" id="button-newsletter" type="submit">Registrame</button>
-            </form>
-          </div>
-        </div>
-      </aside>
     </div>
   </section>
 </template>
