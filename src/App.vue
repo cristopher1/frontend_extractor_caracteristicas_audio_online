@@ -6,6 +6,14 @@
 
 <template>
   <MainNav />
-  <RouterView />
+  <div class="content">
+    <RouterView />
+  </div>
   <MainFooter />
 </template>
+
+<style>
+  .content {
+    margin-top: 56px;
+  }
+</style>
