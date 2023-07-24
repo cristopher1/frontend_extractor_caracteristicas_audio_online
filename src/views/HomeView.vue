@@ -5,7 +5,6 @@ import Carousel from '../components/carousel/Carousel.vue';
 import SignUp from '../components/forms/SignUp.vue'
 import { urlInformationName, urlSignInName } from '../lib/urlName'
 import {
-  characteristicsImg,
   spectrogramZumbidos38SegImg,
   melSpectrogramZumbidos38SegImg,
   mfcc13Zumbidos38SegImg,
