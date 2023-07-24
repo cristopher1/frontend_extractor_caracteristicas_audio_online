@@ -1,0 +1,1 @@
+export { default as autorImg } from './autor.png'
