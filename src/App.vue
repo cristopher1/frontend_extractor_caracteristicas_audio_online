@@ -9,7 +9,3 @@
   <RouterView />
   <MainFooter />
 </template>
-
-<style scoped>
-
-</style>
