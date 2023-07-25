@@ -1,14 +1,29 @@
 <script setup>
 const props = defineProps({
-    carouselId: 'string',
-    dataBsSlide: 'string',
-    carouselControl: 'string'
+    buttonInfo: {
+        carouselId: 'string',
+        dataBsSlide: 'string',
+        carouselControl: 'string'
+    }
 })
+
+const { buttonInfo } = props
+
+const button = {
+    'type': 'button',
+    'class': `carousel-control-${buttonInfo.carouselControl}`,
+    'data-bs-target': `#${buttonInfo.carouselId}`,
+    'data-bs-slide': buttonInfo.dataBsSlide
+}
+
+const span = {
+    'class': `carousel-control-${buttonInfo.carouselControl}-icon`,
+    'aria-hidden': true
+}
 </script>
 
 <template>
-    <button :class="`carousel-control-${carouselControl}`" type="button" :data-bs-target="`#${carouselId}`"
-        :data-bs-slide="dataBsSlide">
-        <span :class="`carousel-control-${carouselControl}-icon`" aria-hidden="true"></span>
+    <button v-bind="button">
+        <span v-bind="span"></span>
     </button>
 </template>

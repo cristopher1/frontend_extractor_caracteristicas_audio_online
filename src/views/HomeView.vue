@@ -1,20 +1,9 @@
 <script setup>
 import HomeHeader from '../components/headers/Home.vue';
+import SectionCharacteristicsResults from '../components/sections/home/CharacteristicsResults.vue'
 import GenericFeature from '../components/features/GenericFeature.vue'
-import Carousel from '../components/carousel/Carousel.vue';
 import SignUp from '../components/forms/SignUp.vue'
 import { urlInformationName, urlSignInName } from '../lib/urlName'
-import {
-  spectrogramZumbidos38SegImg,
-  melSpectrogramZumbidos38SegImg,
-  mfcc13Zumbidos38SegImg,
-  serieTiempoLadrido4SegImg,
-  spectrogramLadrido4SegImg,
-  melSpectrogramLadrido4SegImg,
-  serieTiempoAcordeGuitarra4SegImg,
-  mfcc20SerieTiempoAcordeGuitarra4SegImg,
-  mfcc20MelAcordeGuitarra4SegImg
-} from '../assets/img/views/home'
 
 const homeHeader = {
   headerInfo: {
@@ -32,80 +21,12 @@ const homeHeader = {
   }
 }
 
-const characteristicResults = [
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Espectrograma",
-    cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
-    imgSrc: spectrogramZumbidos38SegImg,
-    soundSrc: "Generado a partir de zumbidos de abejas",
-    soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
-  },
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Espectrograma de MEL",
-    cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
-    imgSrc: melSpectrogramZumbidos38SegImg,
-    soundSrc: "Generado a partir de zumbidos de abejas",
-    soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
-  },
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
-    cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
-    imgSrc: mfcc13Zumbidos38SegImg,
-    soundSrc: "Generado a partir de zumbidos de abejas",
-    soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
-  },
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Serie de tiempo",
-    cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-    imgSrc: serieTiempoLadrido4SegImg,
-    soundSrc: "Generado a partir de ladridos de perro",
-    soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
-  },
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Espectrograma",
-    cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-    imgSrc: spectrogramLadrido4SegImg,
-    soundSrc: "Generado a partir de ladridos de perro",
-    soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
-  },
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Espectrograma de MEL",
-    cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-    imgSrc: melSpectrogramLadrido4SegImg,
-    soundSrc: "Generado a partir de ladridos de perro",
-    soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
-  },
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Serie de tiempo",
-    cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-    imgSrc: serieTiempoAcordeGuitarra4SegImg,
-    soundSrc: "Generado a partir de acordes de guitarra",
-    soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
-  },
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
-    cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-    imgSrc: mfcc20SerieTiempoAcordeGuitarra4SegImg,
-    soundSrc: "Generado a partir de acordes de guitarra",
-    soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
-  },
-  {
-    cardTipe: "Imagen",
-    cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
-    cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-    imgSrc: mfcc20MelAcordeGuitarra4SegImg,
-    soundSrc: "Generado a partir de acordes de guitarra",
-    soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+const sectionCharacteristicsResults = {
+  sectionInfo: {
+    title: 'Características extraídas',
+    description: 'De manera sencilla podrá tener resultados como los siguientes.'
   }
-]
+}
 
 const features = [
   {
@@ -152,23 +73,7 @@ const features = [
   <!-- Header-->
   <HomeHeader v-bind="homeHeader" />
   <!-- Characteristics results preview section-->
-  <section>
-    <div class="container px-5 my-5">
-      <div class="row gx-5 justify-content-center">
-        <div class="col-lg-8 col-xl-6">
-          <div class="text-center">
-            <h2 class="fw-bolder">Características extraídas</h2>
-            <p class="lead fw-normal text-muted mb-5">De manera sencilla podrá tener resultados como los siguientes.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row gx-5">
-        <Carousel id="characteristics-result" pathDirectoryCarouselItem="cards"
-          nameFileCarouselItem="SoundCharacteristics" :withIndicators="true" :withCarouselControl="true" :withRows="true"
-          :data="characteristicResults" :dataBsInterval="4000" :nCols="3" colClass="col" carouselClass="carousel-fade" />
-      </div>
-    </div>
-  </section>
+  <SectionCharacteristicsResults v-bind="sectionCharacteristicsResults"/>
   <!-- Call to action-->
   <section id="sign-up" class="bg-primary bg-gradient p-4 p-sm-5 py-5 mx-3">
     <SignUp title="Registrate." description="Comience a usar las funcionalidades de la aplicación."
