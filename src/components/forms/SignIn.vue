@@ -14,7 +14,7 @@
                 <div class="card-group mb-0">
                     <div class="card p-4">
                         <div class="card-body">
-                            <form method="POST" action="{% url 'login' %}">
+                            <form method="POST" action="">
                                 <h1>Iniciar sesión</h1>
                                 <p class="text-muted">Ingresa tus datos e inicia sesión</p>
                                 <div class="input-group mb-3">

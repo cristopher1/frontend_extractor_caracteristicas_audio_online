@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-    buttonInfo: {
+    componentInfo: {
         carouselId: 'string',
         indexSlide: 'int',
         ariaCurrent: 'bool',
@@ -8,14 +8,14 @@ const props = defineProps({
     }
 })
 
-const { buttonInfo } = props
+const { carouselId, indexSlide, ariaCurrent, ariaLabel } = props.componentInfo
 
 const button = {
     'type': "button",
-    'data-bs-target': `#${buttonInfo.carouselId}`,
-    'data-bs-slide-to': buttonInfo.indexSlide,
-    'aria-current': buttonInfo.ariaCurrent,
-    'aria-label': buttonInfo.ariaLabel
+    'data-bs-target': `#${carouselId}`,
+    'data-bs-slide-to': indexSlide,
+    'aria-current': ariaCurrent,
+    'aria-label': ariaLabel
 }
 </script>
 

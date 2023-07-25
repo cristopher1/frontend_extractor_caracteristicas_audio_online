@@ -13,86 +13,104 @@ import {
 } from '../../../assets/img/views/home'
 
 const props = defineProps({
-    sectionInfo: {
+    componentInfo: {
         title: 'string',
         description: 'string'
     }
 })
 
-const { title, description } = props.sectionInfo
+const { title, description } = props.componentInfo
 
 const characteristicResults = [
     {
-        cardTipe: "Imagen",
-        cardTitle: "Espectrograma",
-        cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
-        imgSrc: spectrogramZumbidos38SegImg,
-        soundSrc: "Generado a partir de zumbidos de abejas",
-        soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Espectrograma",
+            cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
+            imgSrc: spectrogramZumbidos38SegImg,
+            soundSrc: "Generado a partir de zumbidos de abejas",
+            soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
+        }
     },
     {
-        cardTipe: "Imagen",
-        cardTitle: "Espectrograma de MEL",
-        cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
-        imgSrc: melSpectrogramZumbidos38SegImg,
-        soundSrc: "Generado a partir de zumbidos de abejas",
-        soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Espectrograma de MEL",
+            cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
+            imgSrc: melSpectrogramZumbidos38SegImg,
+            soundSrc: "Generado a partir de zumbidos de abejas",
+            soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
+        }
     },
     {
-        cardTipe: "Imagen",
-        cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
-        cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
-        imgSrc: mfcc13Zumbidos38SegImg,
-        soundSrc: "Generado a partir de zumbidos de abejas",
-        soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
+            cardDescription: "Resultado obtenido a partir de 38 seg de audio.",
+            imgSrc: mfcc13Zumbidos38SegImg,
+            soundSrc: "Generado a partir de zumbidos de abejas",
+            soundFileExt: "Extensión: mp3 &middot; Muestreo: 44100"
+        }
     },
     {
-        cardTipe: "Imagen",
-        cardTitle: "Serie de tiempo",
-        cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-        imgSrc: serieTiempoLadrido4SegImg,
-        soundSrc: "Generado a partir de ladridos de perro",
-        soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Serie de tiempo",
+            cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
+            imgSrc: serieTiempoLadrido4SegImg,
+            soundSrc: "Generado a partir de ladridos de perro",
+            soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        }
     },
     {
-        cardTipe: "Imagen",
-        cardTitle: "Espectrograma",
-        cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-        imgSrc: spectrogramLadrido4SegImg,
-        soundSrc: "Generado a partir de ladridos de perro",
-        soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Espectrograma",
+            cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
+            imgSrc: spectrogramLadrido4SegImg,
+            soundSrc: "Generado a partir de ladridos de perro",
+            soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        }
     },
     {
-        cardTipe: "Imagen",
-        cardTitle: "Espectrograma de MEL",
-        cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-        imgSrc: melSpectrogramLadrido4SegImg,
-        soundSrc: "Generado a partir de ladridos de perro",
-        soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Espectrograma de MEL",
+            cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
+            imgSrc: melSpectrogramLadrido4SegImg,
+            soundSrc: "Generado a partir de ladridos de perro",
+            soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        }
     },
     {
-        cardTipe: "Imagen",
-        cardTitle: "Serie de tiempo",
-        cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-        imgSrc: serieTiempoAcordeGuitarra4SegImg,
-        soundSrc: "Generado a partir de acordes de guitarra",
-        soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Serie de tiempo",
+            cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
+            imgSrc: serieTiempoAcordeGuitarra4SegImg,
+            soundSrc: "Generado a partir de acordes de guitarra",
+            soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        }
     },
     {
-        cardTipe: "Imagen",
-        cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
-        cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-        imgSrc: mfcc20SerieTiempoAcordeGuitarra4SegImg,
-        soundSrc: "Generado a partir de acordes de guitarra",
-        soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
+            cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
+            imgSrc: mfcc20SerieTiempoAcordeGuitarra4SegImg,
+            soundSrc: "Generado a partir de acordes de guitarra",
+            soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        }
     },
     {
-        cardTipe: "Imagen",
-        cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
-        cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
-        imgSrc: mfcc20MelAcordeGuitarra4SegImg,
-        soundSrc: "Generado a partir de acordes de guitarra",
-        soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        componentInfo: {
+            cardTipe: "Imagen",
+            cardTitle: "Coeficientes cepstrales en la frecuencia de MEL",
+            cardDescription: "Resultado obtenido a partir de 4 seg de audio.",
+            imgSrc: mfcc20MelAcordeGuitarra4SegImg,
+            soundSrc: "Generado a partir de acordes de guitarra",
+            soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
+        }
     }
 ]
 
@@ -101,7 +119,7 @@ const carousel = {
         carouselClass: "carousel-fade",
         colClass: "col"
     },
-    carouselInfo: {
+    componentInfo: {
         id: "characteristics",
         pathDirectoryCarouselItem: "cards",
         nameFileCarouselItem: "SoundCharacteristics",

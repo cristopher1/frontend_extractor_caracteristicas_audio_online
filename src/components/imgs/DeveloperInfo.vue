@@ -6,7 +6,7 @@ const props = defineProps({
         titleClass: 'string',
         descriptionClass: 'string'
     },
-    developerInfo: {
+    componentInfo: {
         autorImg: 'string',
         nombre: 'string',
         description: 'string',
@@ -14,7 +14,7 @@ const props = defineProps({
 })
 
 const { containerClass, imgClass, titleClass, descriptionClass } = props.classInfo
-const { nombre, description } = props.developerInfo
+const { autorImg, nombre, description } = props.componentInfo
 
 const img = {
     src: autorImg

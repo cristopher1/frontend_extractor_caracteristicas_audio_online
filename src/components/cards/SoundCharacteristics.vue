@@ -1,12 +1,16 @@
 <script setup>
-    const props = defineProps({
+const props = defineProps({
+    componentInfo: {
         cardTipe: 'string',
         cardTitle: 'string',
         cardDescription: 'string',
         imgSrc: 'string',
         soundSrc: 'string',
         soundFileExt: 'string',
-    })
+    }
+})
+
+const { cardTipe, cardTitle, cardDescription, imgSrc, soundSrc, soundFileExt } = props.componentInfo
 </script>
 
 <template>
@@ -14,7 +18,9 @@
         <img class="card-img-top" :src="imgSrc" height="240" />
         <div class="card-body p-4">
             <div class="badge bg-primary bg-gradient rounded-pill mb-2"> {{ cardTipe }} </div>
-            <a class="text-decoration-none link-dark stretched-link"><h5 class="card-title mb-3"> {{ cardTitle }} </h5></a>
+            <a class="text-decoration-none link-dark stretched-link">
+                <h5 class="card-title mb-3"> {{ cardTitle }} </h5>
+            </a>
             <p class="card-text mb-0"> {{ cardDescription }} </p>
         </div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">

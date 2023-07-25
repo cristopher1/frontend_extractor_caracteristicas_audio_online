@@ -1,11 +1,18 @@
 <script setup>
-    const props = defineProps({
-        title: 'string',
-        description: 'string',
+const props = defineProps({
+    classInfo: {
         titleClass: 'string',
         descriptionClass: 'string',
         iconClass: 'string'
-    })
+    },
+    componentInfo: {
+        title: 'string',
+        description: 'string',
+    }
+})
+
+const { titleClass, descriptionClass, iconClass } = props.classInfo
+const { title, description } = props.componentInfo
 </script>
 
 <template>

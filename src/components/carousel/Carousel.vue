@@ -8,7 +8,7 @@ const props = defineProps({
         carouselClass: 'string',
         colClass: 'string'
     },
-    carouselInfo: {
+    componentInfo: {
         id: 'string',
         pathDirectoryCarouselItem: 'string',
         nameFileCarouselItem: 'string',
@@ -26,7 +26,7 @@ const {
     id, pathDirectoryCarouselItem, nameFileCarouselItem, data,
     dataBsInterval, nCols, withIndicators,
     withCarouselControl, withRows
-} = props.carouselInfo
+} = props.componentInfo
 
 const containerDiv = {
     'id': id,
@@ -62,7 +62,7 @@ const carouselItem = defineAsyncComponent(() => {
     <div v-if="nSlides = calculateNSlide(withRows, data.length, nCols)" :class="carouselClass" v-bind="containerDiv">
         <div class="carousel-indicators" v-if="withIndicators">
             <Indicator v-for="n in nSlides" :key="n" :class="{ active: isActive(n) }" v-bind="{
-                buttonInfo: {
+                componentInfo: {
                     carouselId: id,
                     indexSlide: n - 1,
                     ariaCurrent: isAriaCurrent(n),
@@ -85,7 +85,7 @@ const carouselItem = defineAsyncComponent(() => {
         </div>
         <template v-if="withCarouselControl">
             <ControlButton v-for="controlSlide in controlSlides" v-bind="{
-                buttonInfo: {
+                componentInfo: {
                     carouselId: id,
                     carouselControl: controlSlide,
                     dataBsSlide: controlSlide,

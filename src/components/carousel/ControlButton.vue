@@ -1,23 +1,23 @@
 <script setup>
 const props = defineProps({
-    buttonInfo: {
+    componentInfo: {
         carouselId: 'string',
         dataBsSlide: 'string',
         carouselControl: 'string'
     }
 })
 
-const { buttonInfo } = props
+const { carouselId, dataBsSlide, carouselControl } = props.componentInfo
 
 const button = {
     'type': 'button',
-    'class': `carousel-control-${buttonInfo.carouselControl}`,
-    'data-bs-target': `#${buttonInfo.carouselId}`,
-    'data-bs-slide': buttonInfo.dataBsSlide
+    'class': `carousel-control-${carouselControl}`,
+    'data-bs-target': `#${carouselId}`,
+    'data-bs-slide': dataBsSlide
 }
 
 const span = {
-    'class': `carousel-control-${buttonInfo.carouselControl}-icon`,
+    'class': `carousel-control-${carouselControl}-icon`,
     'aria-hidden': true
 }
 </script>
