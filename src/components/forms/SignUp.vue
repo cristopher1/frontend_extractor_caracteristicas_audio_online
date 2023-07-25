@@ -1,9 +1,13 @@
 <script setup>
-    const props = defineProps({
+const props = defineProps({
+    componentInfo: {
         title: 'string',
         description: 'string',
         titleButtonSubmit: 'string'
-    })
+    }
+})
+
+const { title, description, titleButtonSubmit } = props.componentInfo
 </script>
 
 <template>
@@ -20,7 +24,8 @@
                 <div class="mb-3">
                     <input type="password" class="form-control" placeholder="Contraseña" id="contrasenna" name="password">
                 </div>
-                <button class="btn btn-outline-light" id="button-newsletter" type="submit"> {{ titleButtonSubmit }} </button>
+                <button class="btn btn-outline-light" id="button-newsletter" type="submit"> {{ titleButtonSubmit }}
+                </button>
             </form>
         </div>
     </div>

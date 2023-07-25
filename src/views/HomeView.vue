@@ -6,18 +6,30 @@ import FeaturesSection from '../components/sections/home/Features.vue';
 import { urlInformationName, urlSignInName } from '../lib/urlName'
 
 const homeHeader = {
-  headerInfo: {
+  componentInfo: {
     title: "Extractor de características de audios online",
     description: `Extraiga de manera sencilla información relevante
                 de sus archivos de audios`,
-  },
-  signInInfo: {
-    url: { name: urlSignInName },
-    message: 'Comenzar'
-  },
-  informationInfo: {
-    url: { name: urlInformationName },
-    message: 'Ver más'
+    data: [
+      {
+        componentInfo: {
+          url: { name: urlSignInName },
+          message: 'Comenzar',
+        },
+        classInfo: {
+          class: 'btn btn-primary btn-lg px-4 me-sm-3'
+        }
+      },
+      {
+        componentInfo: {
+          url: { name: urlInformationName },
+          message: 'Ver más',
+        },
+        classInfo: {
+          class: 'btn btn-outline-light btn-lg px-4'
+        }
+      },
+    ]
   }
 }
 
@@ -37,7 +49,7 @@ const sectionSignIn = {
 }
 
 const sectionFeatures = {
-  componentInfo : {
+  componentInfo: {
     title: 'Algunas ventajas.'
   }
 }
@@ -51,5 +63,5 @@ const sectionFeatures = {
   <!-- Call to action-->
   <SignUpSection v-bind="sectionSignIn" />
   <!-- Features section-->
-  <FeaturesSection v-bind="sectionFeatures"/>  
+  <FeaturesSection v-bind="sectionFeatures" />
 </template>
