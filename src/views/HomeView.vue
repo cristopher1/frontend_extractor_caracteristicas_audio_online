@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import HomeHeader from '../components/headers/Home.vue';
 import GenericFeature from '../components/features/GenericFeature.vue'
 import Carousel from '../components/carousel/Carousel.vue';
 import SignUp from '../components/forms/SignUp.vue'
@@ -16,8 +16,21 @@ import {
   mfcc20MelAcordeGuitarra4SegImg
 } from '../assets/img/views/home'
 
-const toInformation = { name: urlInformationName }
-const toSignIn = { name: urlSignInName }
+const homeHeader = {
+  headerInfo: {
+    title: "Extractor de características de audios online",
+    description: `Extraiga de manera sencilla información relevante
+                de sus archivos de audios`,
+  },
+  signInInfo: {
+    url: { name: urlSignInName },
+    message: 'Comenzar'
+  },
+  informationInfo: {
+    url: { name: urlInformationName },
+    message: 'Ver más'
+  }
+}
 
 const characteristicResults = [
   {
@@ -96,58 +109,48 @@ const characteristicResults = [
 
 const features = [
   {
-    containerClass: 'col mb-5 h-100',
-    iconClass: 'bi bi-collection',
-    title: 'Varias características',
-    description: `Puede generar espectrogramas, espectrogramas de MEL,
-                  series de tiempo de amplitud y coeficientes cepstrales
-                  en la frecuencia de MEL.`
+    featureInfo: {
+      iconClass: 'bi bi-collection',
+      title: 'Varias características',
+      description: `Puede generar espectrogramas, espectrogramas de MEL,
+                    series de tiempo de amplitud y coeficientes cepstrales
+                    en la frecuencia de MEL.`
+    },
+    containerClass: 'col mb-5 h-100'
   },
   {
-    containerClass: 'col mb-5 h-100',
-    iconClass: 'bi bi-download',
-    title: 'Descargar Resultados',
-    description: 'Puede descargarlos como imágenes o archivos con objetos python.'
+    featureInfo: {
+      iconClass: 'bi bi-download',
+      title: 'Descargar Resultados',
+      description: 'Puede descargarlos como imágenes o archivos con objetos python.'
+    },
+    containerClass: 'col mb-5 h-100'
   },
   {
-    containerClass: 'col mb-5 mb-md-0 h-100',
-    iconClass: 'bi bi-file-earmark-code',
-    title: 'Directamente en python',
-    description: `Genere matrices de distribución
+    featureInfo: {
+      iconClass: 'bi bi-file-earmark-code',
+      title: 'Directamente en python',
+      description: `Genere matrices de distribución
                   de energía que pueden ser cargados directamente
                   en python usando los modúlos pickle y numpy.`
+    },
+    containerClass: 'col mb-5 mb-md-0 h-100'
   },
   {
-    containerClass: 'col h-100',
-    iconClass: 'bi bi-check-all',
-    title: 'Sencillo',
-    description: `Ajuste los parámetros necesarios y genere
+    featureInfo: {
+      iconClass: 'bi bi-check-all',
+      title: 'Sencillo',
+      description: `Ajuste los parámetros necesarios y genere
                   resultados de manera rápida y sencilla.`
+    },
+    containerClass: 'col h-100'
   }
 ]
 </script>
 
 <template>
   <!-- Header-->
-  <header class="bg-dark py-5">
-    <div class="container px-5">
-      <div class="row gx-5 align-items-center justify-content-center">
-        <div class="col-lg-8 col-xl-7 col-xxl-6">
-          <div class="my-5 text-center text-xl-start">
-            <h1 class="display-5 fw-bolder text-white mb-2">Extractor de características de audios online</h1>
-            <p class="lead fw-normal text-white-50 mb-4">Extraiga de manera sencilla información relevante de sus archivos
-              de audios</p>
-            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-              <RouterLink class="btn btn-primary btn-lg px-4 me-sm-3" :to="toSignIn">Comenzar</RouterLink>
-              <RouterLink class="btn btn-outline-light btn-lg px-4" :to="toInformation">Ver más</RouterLink>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-        </div>
-      </div>
-    </div>
-  </header>
+  <HomeHeader v-bind="homeHeader" />
   <!-- Characteristics results preview section-->
   <section>
     <div class="container px-5 my-5">
@@ -181,7 +184,7 @@ const features = [
         <div class="col-lg-8">
           <div class="row gx-5 row-cols-1 row-cols-md-2">
             <div v-for="feature in features" :key="feature" :class="feature.containerClass">
-              <GenericFeature :iconClass="feature.iconClass" :title="feature.title" :description="feature.description" />
+              <GenericFeature v-bind="feature.featureInfo" />
             </div>
           </div>
         </div>

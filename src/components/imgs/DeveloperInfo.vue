@@ -1,18 +1,23 @@
 <script setup>
     const props = defineProps({
-        autorImg: 'string',
-        imgClass: 'string',
-        title: 'string',
-        description: 'string',
-        titleClass: 'string',
-        descriptionClass: 'string'
+        classInfo: {
+            containerClass: 'string',
+            imgClass: 'string',
+            titleClass: 'string',
+            descriptionClass: 'string'
+        },
+        developerInfo: {
+            autorImg: 'string',
+            nombre: 'string',
+            description: 'string',
+        }
     })
 </script>
 
 <template>
-    <div class="$attrs.class">
-        <img :class="imgClass" :src="autorImg" />
-        <h5 :class="titleClass"> {{ title }} </h5>
-        <div :class="descriptionClass"> {{ description }} </div>
+    <div :class="classInfo.containerClass">
+        <img :class="classInfo.imgClass" :src="developerInfo.autorImg" />
+        <h5 :class="classInfo.titleClass"> {{ developerInfo.nombre }} </h5>
+        <div :class="classInfo.descriptionClass"> {{ developerInfo.description }} </div>
     </div>
 </template>
