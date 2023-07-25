@@ -2,6 +2,27 @@
 import GenericFeature from '../components/features/GenericFeature.vue';
 import DeveloperInfo from '../components/imgs/DeveloperInfo.vue';
 import { autorImg } from '../assets/img/views/contacto'
+
+const contacts = [
+    {
+        redirect: 'https://www.linkedin.com/in/cristopherjimenez/',
+        title: 'Linkedin',
+        description: 'Mira el perfil en linkedin.',
+        iconClass: 'bi bi-linkedin'
+    },
+    {
+        redirect: 'https://gitlab.labcomp.cl/cljimene',
+        title: 'Gitlab',
+        description: 'Visita la cuenta de gitlab.',
+        iconClass: 'bi bi-github'
+    },
+    {
+        redirect: 'mailto:cristopher.jimene.13@sansano.usm.cl?subject=Duda%20aplicación%20desarrollo%20web%20python',
+        title: 'Email',
+        description: '¿Tienes dudas sobre la aplicación?. Contáctate con el desarrollador.',
+        iconClass: 'bi bi-envelope'
+    }
+]
 </script>
 
 <template>
@@ -25,24 +46,12 @@ import { autorImg } from '../assets/img/views/contacto'
     <div class="container px-5 text-center">
         <!-- Contact cards-->
         <div class="row gx-5 row-cols-2 row-cols-lg-3 py-5">
-            <div class="col">
-                <a class="text-decoration-none" target="_blank" href="https://www.linkedin.com/in/cristopherjimenez/">
-                    <GenericFeature iconClass="bi bi-linkedin" titleClass="mb-2 text-dark" descriptionClass="text-muted"
-                        title="Linkedin" description="Mira el perfil en linkedin." />
-                </a>
-            </div>
-            <div class="col">
-                <a class="text-decoration-none" target="_blank" href="https://gitlab.labcomp.cl/cljimene">
-                    <GenericFeature iconClass="bi bi-github" titleClass="mb-2 text-dark" descriptionClass="text-muted"
-                        title="Gitlab" description="Visita la cuenta de gitlab." />
-                </a>
-            </div>
-            <div class="col">
-                <a class="text-decoration-none"
-                    href="mailto:cristopher.jimene.13@sansano.usm.cl?subject=Duda%20aplicación%20desarrollo%20web%20python">
-                    <GenericFeature iconClass="bi bi-envelope" titleClass="mb-2 text-dark" descriptionClass="text-muted"
-                        title="Email" description="¿Tienes dudas sobre la aplicación?. Contáctate con el desarrollador." />
+            <div class="col" v-for="contact in contacts" :key="contact">
+                <a class="text-decoration-none" target="_blank" :href="contact.redirect">
+                    <GenericFeature :iconClass="contact.iconClass" titleClass="mb-2 text-dark" descriptionClass="text-muted"
+                        :title="contact.title" :description="contact.description" />
                 </a>
             </div>
         </div>
-    </div></template>
+    </div>
+</template>

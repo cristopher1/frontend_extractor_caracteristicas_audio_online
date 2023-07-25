@@ -92,7 +92,39 @@ const characteristicResults = [
     soundSrc: "Generado a partir de acordes de guitarra",
     soundFileExt: "Extensión: wav &middot; Muestreo: 44100"
   }
-]              
+]
+
+const features = [
+  {
+    containerClass: 'col mb-5 h-100',
+    iconClass: 'bi bi-collection',
+    title: 'Varias características',
+    description: `Puede generar espectrogramas, espectrogramas de MEL,
+                  series de tiempo de amplitud y coeficientes cepstrales
+                  en la frecuencia de MEL.`
+  },
+  {
+    containerClass: 'col mb-5 h-100',
+    iconClass: 'bi bi-download',
+    title: 'Descargar Resultados',
+    description: 'Puede descargarlos como imágenes o archivos con objetos python.'
+  },
+  {
+    containerClass: 'col mb-5 mb-md-0 h-100',
+    iconClass: 'bi bi-file-earmark-code',
+    title: 'Directamente en python',
+    description: `Genere matrices de distribución
+                  de energía que pueden ser cargados directamente
+                  en python usando los modúlos pickle y numpy.`
+  },
+  {
+    containerClass: 'col h-100',
+    iconClass: 'bi bi-check-all',
+    title: 'Sencillo',
+    description: `Ajuste los parámetros necesarios y genere
+                  resultados de manera rápida y sencilla.`
+  }
+]
 </script>
 
 <template>
@@ -148,22 +180,8 @@ const characteristicResults = [
         </div>
         <div class="col-lg-8">
           <div class="row gx-5 row-cols-1 row-cols-md-2">
-            <div class="col mb-5 h-100">
-              <GenericFeature iconClass="bi bi-collection" title="Varias características" description="Puede generar espectrogramas, espectrogramas de MEL,
-                          series de tiempo de amplitud y coeficientes cepstrales en la frecuencia de MEL." />
-            </div>
-            <div class="col mb-5 h-100">
-              <GenericFeature iconClass="bi bi-download" title="Descargar Resultados"
-                description="Puede descargarlos como imágenes o archivos con objetos python." />
-            </div>
-            <div class="col mb-5 mb-md-0 h-100">
-              <GenericFeature iconClass="bi bi-file-earmark-code" title="Directamente en python"
-                description="Genere matrices de distribución
-                            de energía que pueden ser cargados directamente en python usando los modúlos pickle y numpy." />
-            </div>
-            <div class="col h-100">
-              <GenericFeature iconClass="bi bi-check-all" title="Sencillo"
-                description="Ajuste los parámetros necesarios y genere resultados de manera rápida y sencilla." />
+            <div v-for="feature in features" :key="feature" :class="feature.containerClass">
+              <GenericFeature :iconClass="feature.iconClass" :title="feature.title" :description="feature.description" />
             </div>
           </div>
         </div>
