@@ -7,7 +7,11 @@ const props = defineProps({
     }
 })
 
-const { carouselId, dataBsSlide, carouselControl } = props.componentInfo
+const {
+    carouselId,
+    dataBsSlide,
+    carouselControl
+} = props.componentInfo
 
 const button = {
     'type': 'button',

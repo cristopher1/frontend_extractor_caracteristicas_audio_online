@@ -7,7 +7,9 @@ const props = defineProps({
     }
 })
 
-const { title } = props.componentInfo
+const {
+    title
+} = props.componentInfo
 
 const features = [
     {

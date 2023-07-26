@@ -8,7 +8,12 @@ const props = defineProps({
     }
 })
 
-const { carouselId, indexSlide, ariaCurrent, ariaLabel } = props.componentInfo
+const {
+    carouselId,
+    indexSlide,
+    ariaCurrent,
+    ariaLabel
+} = props.componentInfo
 
 const button = {
     'type': "button",

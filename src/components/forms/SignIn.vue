@@ -18,7 +18,10 @@ const props = defineProps({
     }
 })
 
-const { signInInfo, signUpInfo } = props.componentInfo
+const {
+    signInInfo,
+    signUpInfo
+} = props.componentInfo
 </script>
 
 <template>

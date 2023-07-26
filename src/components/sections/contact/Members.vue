@@ -9,7 +9,10 @@ const props = defineProps({
     }
 })
 
-const { title, description } = props.componentInfo
+const {
+    title,
+    description
+} = props.componentInfo
 
 const developerInfo = {
     classInfo: {

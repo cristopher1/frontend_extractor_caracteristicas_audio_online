@@ -10,7 +10,14 @@ const props = defineProps({
     }
 })
 
-const { cardTipe, cardTitle, cardDescription, imgSrc, soundSrc, soundFileExt } = props.componentInfo
+const {
+    cardTipe,
+    cardTitle,
+    cardDescription,
+    imgSrc,
+    soundSrc,
+    soundFileExt
+} = props.componentInfo
 </script>
 
 <template>

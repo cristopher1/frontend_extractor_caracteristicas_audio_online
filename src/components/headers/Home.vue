@@ -19,7 +19,11 @@ const props = defineProps({
     }
 })
 
-const { title, description, data } = props.componentInfo
+const {
+    title,
+    description,
+    data
+} = props.componentInfo
 </script>
 
 <template>

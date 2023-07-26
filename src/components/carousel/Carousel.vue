@@ -21,11 +21,21 @@ const props = defineProps({
     }
 })
 
-const { carouselClass, colClass } = props.classInfo
 const {
-    id, pathDirectoryCarouselItem, nameFileCarouselItem, data,
-    dataBsInterval, nCols, withIndicators,
-    withCarouselControl, withRows
+    carouselClass,
+    colClass
+} = props.classInfo
+
+const {
+    id,
+    pathDirectoryCarouselItem,
+    nameFileCarouselItem,
+    data,
+    dataBsInterval,
+    nCols,
+    withIndicators,
+    withCarouselControl,
+    withRows
 } = props.componentInfo
 
 const containerDiv = {

@@ -7,7 +7,11 @@ const props = defineProps({
     }
 })
 
-const { title, description, titleButtonSubmit } = props.componentInfo
+const {
+    title,
+    description,
+    titleButtonSubmit
+} = props.componentInfo
 </script>
 
 <template>

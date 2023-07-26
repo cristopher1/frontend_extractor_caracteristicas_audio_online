@@ -11,8 +11,17 @@ const props = defineProps({
     }
 })
 
-const { titleClass, descriptionClass, iconClass } = props.classInfo
-const { title, description } = props.componentInfo
+const {
+    titleClass,
+    descriptionClass,
+    iconClass
+} = props.classInfo
+
+const {
+    title,
+    description
+} = props.componentInfo
+
 </script>
 
 <template>

@@ -13,8 +13,18 @@ const props = defineProps({
     }
 })
 
-const { containerClass, imgClass, titleClass, descriptionClass } = props.classInfo
-const { autorImg, nombre, description } = props.componentInfo
+const {
+    containerClass,
+    imgClass,
+    titleClass,
+    descriptionClass
+} = props.classInfo
+
+const {
+    autorImg,
+    nombre,
+    description
+} = props.componentInfo
 
 const img = {
     src: autorImg
