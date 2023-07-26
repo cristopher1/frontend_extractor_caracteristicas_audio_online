@@ -80,7 +80,7 @@ const controlSlides = ['prev', 'next']
 <template>
     <div v-if="nSlides = calculateNSlide(withRows, data.length, nCols)" v-bind="containerDiv">
         <div class="carousel-indicators" v-if="withIndicators">
-            <Indicator v-for="n in nSlides" :key="n" v-bind="{
+            <Indicator v-for="n in nSlides" v-bind="{
                 class: { active: isActive(n) },
                 componentInfo: {
                     carouselId: id,
@@ -91,10 +91,10 @@ const controlSlides = ['prev', 'next']
             }" />
         </div>
         <div class="carousel-inner">
-            <div v-for="n in nSlides" :key="n" class="carousel-item" :class="{ active: isActive(n) }"
+            <div v-for="n in nSlides" class="carousel-item" :class="{ active: isActive(n) }"
                 v-bind="carouselInner">
                 <div v-if="withRows" class="row pb-5 pt-5 px-5 py-5">
-                    <div v-for="nCol in nCols" :key="nCol" v-bind="row">
+                    <div v-for="nCol in nCols" v-bind="row">
                         <carouselItem v-if="item = obtainItem(data, n - 1, nCol - 1, nCols)" v-bind="item" />
                     </div>
                 </div>

@@ -52,7 +52,7 @@ const contacts = [
         <div class="container px-5 text-center">
             <!-- Contact cards-->
             <div class="row gx-5 row-cols-2 row-cols-lg-3 py-5">
-                <div class="col" v-for="{ urlRedirect, info } in contacts" :key="urlRedirect">
+                <div class="col" v-for="{ urlRedirect, info } in contacts">
                     <a class="text-decoration-none" target="_blank" :href="urlRedirect">
                         <GenericFeature v-bind="info" />
                     </a>

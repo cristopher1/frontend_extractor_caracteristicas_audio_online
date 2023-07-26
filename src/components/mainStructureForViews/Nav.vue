@@ -36,7 +36,7 @@ const redirections = [
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><span class="nav-link">Registrado como: </span></li>
-                    <li v-for="{ message, url } in redirections" :key="url" class="nav-item">
+                    <li v-for="{ message, url } in redirections" class="nav-item">
                         <RouterLink class="nav-link" :to="url"> {{ message }} </RouterLink>
                     </li>
                 </ul>
