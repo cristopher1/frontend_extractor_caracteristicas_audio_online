@@ -77,8 +77,8 @@ const features = [
                 </div>
                 <div class="col-lg-8">
                     <div class="row gx-5 row-cols-1 row-cols-md-2">
-                        <div v-for="feature in features" :key="feature" :class="feature.containerClass">
-                            <GenericFeature v-bind="feature.info" />
+                        <div v-for="{ info, containerClass } in features" :key="info" :class="containerClass">
+                            <GenericFeature v-bind="info" />
                         </div>
                     </div>
                 </div>
