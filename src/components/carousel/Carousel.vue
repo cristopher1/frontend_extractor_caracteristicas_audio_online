@@ -38,22 +38,14 @@ const {
     withRows
 } = props.componentInfo
 
-const containerDiv = {
-    'id': id,
-    'class': "carousel carousel-dark slide",
-    'data-bs-ride': "carousel"
-}
-
-const carouselInner = {
-    'data-bs-interval': dataBsInterval
-}
-
-const controlSlides = ['prev', 'next']
-
 const calculateNSlide = (withRows, nItems, nCols) => (withRows) ? Math.ceil(nItems / nCols) : nItems
+
 const isActive = (n) => (n === 1) ? true : null
+
 const isAriaCurrent = (n) => (n === 1) ? true : null
+
 const obtainItemIndex = (n, nCol, nCols) => n * nCols + nCol
+
 const obtainItem = (data, n, ...args) => {
     let index = n
     // Se sobrepasa la cantidad de elementos que hay en el arreglo.
@@ -66,12 +58,30 @@ const obtainItem = (data, n, ...args) => {
 const carouselItem = defineAsyncComponent(() => {
     return import(`../${pathDirectoryCarouselItem}/${nameFileCarouselItem}.vue`)
 })
+
+const containerDiv = {
+    'id': id,
+    'class': ["carousel carousel-dark slide", carouselClass],
+    'data-bs-ride': "carousel"
+}
+
+const carouselInner = {
+    'data-bs-interval': dataBsInterval
+}
+
+const row = {
+    class: colClass
+}
+
+const controlSlides = ['prev', 'next']
+
 </script>
 
 <template>
-    <div v-if="nSlides = calculateNSlide(withRows, data.length, nCols)" :class="carouselClass" v-bind="containerDiv">
+    <div v-if="nSlides = calculateNSlide(withRows, data.length, nCols)" v-bind="containerDiv">
         <div class="carousel-indicators" v-if="withIndicators">
-            <Indicator v-for="n in nSlides" :key="n" :class="{ active: isActive(n) }" v-bind="{
+            <Indicator v-for="n in nSlides" :key="n" v-bind="{
+                class: { active: isActive(n) },
                 componentInfo: {
                     carouselId: id,
                     indexSlide: n - 1,
@@ -84,7 +94,7 @@ const carouselItem = defineAsyncComponent(() => {
             <div v-for="n in nSlides" :key="n" class="carousel-item" :class="{ active: isActive(n) }"
                 v-bind="carouselInner">
                 <div v-if="withRows" class="row pb-5 pt-5 px-5 py-5">
-                    <div v-for="nCol in nCols" :key="nCol" :class="colClass">
+                    <div v-for="nCol in nCols" :key="nCol" v-bind="row">
                         <carouselItem v-if="item = obtainItem(data, n - 1, nCol - 1, nCols)" v-bind="item" />
                     </div>
                 </div>

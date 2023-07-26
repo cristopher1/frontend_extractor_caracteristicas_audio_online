@@ -120,7 +120,7 @@ const characteristicResults = [
 const carousel = {
     classInfo: {
         carouselClass: "carousel-fade",
-        colClass: "col"
+        colClass: "col-lg-4 col-md-12"
     },
     componentInfo: {
         id: "characteristics",

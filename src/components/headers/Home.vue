@@ -35,8 +35,10 @@ const {
                         <h1 class="display-5 fw-bolder text-white mb-2"> {{ title }} </h1>
                         <p class="lead fw-normal text-white-50 mb-4"> {{ description }} </p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                            <RouterLink v-for="item in data" :key="item" :class="item.classInfo.class"
-                                :to="item.componentInfo.url"> {{ item.componentInfo.message }} </RouterLink>
+                            <RouterLink v-for="item in data" :key="item" v-bind="{
+                                class: item.classInfo.class,
+                                to: item.componentInfo.url
+                            }"> {{ item.componentInfo.message }} </RouterLink>
                         </div>
                     </div>
                 </div>

@@ -22,10 +22,26 @@ const {
     description
 } = props.componentInfo
 
+const div = {
+    class: 'feature bg-primary bg-gradient text-white rounded-3 mb-3'
+}
+
+const icon = {
+    class: iconClass
+}
+
+const h2 = {
+    class: [ 'h5', titleClass ]
+}
+
+const p = {
+    class: [ 'mb-0', descriptionClass ]
+}
+
 </script>
 
 <template>
-    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i :class="iconClass"></i></div>
-    <h2 class="h5" :class="titleClass"> {{ title }} </h2>
-    <p class="mb-0" :class="descriptionClass"> {{ description }} </p>
+    <div v-bind="div"><i v-bind="icon"></i></div>
+    <h2 v-bind="h2"> {{ title }} </h2>
+    <p v-bind="p"> {{ description }} </p>
 </template>
