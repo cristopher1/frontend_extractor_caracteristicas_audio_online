@@ -25,7 +25,6 @@ const {
 } = props.componentInfo
 
 const urlResolve = UrlResolveSingleton.getInstance()
-console.log(urlResolve.resolve('login'))
 </script>
 
 <template>
