@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { UrlResolveSingleton } from '../../lib/urlResolve'
 
 const props = defineProps({
     componentInfo: {
@@ -22,6 +23,9 @@ const {
     signInInfo,
     signUpInfo
 } = props.componentInfo
+
+const urlResolve = UrlResolveSingleton.getInstance()
+console.log(urlResolve.resolve('login'))
 </script>
 
 <template>
@@ -31,7 +35,7 @@ const {
                 <div class="card-group mb-0">
                     <div class="card p-4">
                         <div class="card-body">
-                            <form method="POST" action="">
+                            <form @submit.prevent>
                                 <h1> {{ signInInfo.title }} </h1>
                                 <p class="text-muted"> {{ signInInfo.description }} </p>
                                 <div class="input-group mb-3">

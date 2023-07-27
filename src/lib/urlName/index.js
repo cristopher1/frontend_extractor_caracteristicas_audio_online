@@ -1,3 +1,4 @@
+// Name of urls used for router/index.js
 export const
     urlInformationName = 'informacion',
     urlSignInName = 'login',

@@ -12,6 +12,10 @@ const {
     description,
     titleButtonSubmit
 } = props.componentInfo
+
+const signUp = () => {
+    
+}
 </script>
 
 <template>
@@ -21,7 +25,7 @@ const {
             <div class="text-white-50"> {{ description }} </div>
         </div>
         <div class="ms-xl-4">
-            <form class="text-center text-white" method="POST" action="">
+            <form class="text-center text-white" @submit.prevent>
                 <div class="mb-3">
                     <input type="email" class="form-control" placeholder="Correo electrónico" id="correo" name="email">
                 </div>
