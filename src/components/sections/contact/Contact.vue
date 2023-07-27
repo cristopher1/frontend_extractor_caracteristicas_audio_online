@@ -24,11 +24,11 @@ const contacts = [
                 descriptionClass: "text-muted"
             },
             componentInfo: {
-                title: 'Gitlab',
-                description: 'Visita la cuenta de gitlab.'
+                title: 'Github',
+                description: 'Visita la cuenta de github.'
             }
         },
-        urlRedirect: 'https://gitlab.labcomp.cl/cljimene'
+        urlRedirect: 'https://github.com/cristopher1'
     },
     {
         info: {
