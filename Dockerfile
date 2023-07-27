@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     nano
 
 # Se establece el directorio de trabajo actual
-WORKDIR /usr/src/colmena_memoria
+WORKDIR /usr/src/extractor_caracteristicas
 
 # Se copia package.json y package-lock.json al directorio de trabajo actual
 COPY package*.json ./
