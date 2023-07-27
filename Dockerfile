@@ -19,7 +19,7 @@ RUN npm ci
 COPY . ./
 
 # Se expone el puerto
-EXPOSE 8080
+EXPOSE 5173
 
 # Se ejecuta vue
 CMD [ "npm", "run", "dev" ]
