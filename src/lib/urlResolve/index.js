@@ -1,4 +1,6 @@
-import { NotExternalConstructorError, PathNotFoundError } from './Errors'
+import { NotExternalConstructorError, IncorrectTypeError } from '../genericErrors'
+import { PathNotFoundError } from './Errors'
+import { isTypeof } from '../genericFunctions'
 
 // Using into constructor
 const {
@@ -17,8 +19,9 @@ export class UrlResolveSingleton {
 
     #urlBase
     #paths
+    #isType
 
-    constructor() {
+    constructor(isType) {
         if (UrlResolveSingleton.#usingExternalCall) {
             throw new NotExternalConstructorError()
         }
@@ -31,6 +34,7 @@ export class UrlResolveSingleton {
             'characteristics': VITE_API_CHARACTERISTICS,
             'records': VITE_API_RECORDS
         }
+        this.#isType = isType
     }
 
     // to active internall call
@@ -40,15 +44,18 @@ export class UrlResolveSingleton {
 
     static getInstance () {
         UrlResolveSingleton.#changeExternalCall()
-        const instance = UrlResolveSingleton.ulrResolve ? UrlResolveSingleton.ulrResolve : new UrlResolveSingleton()
+        const instance = UrlResolveSingleton.ulrResolve ? UrlResolveSingleton.ulrResolve : new UrlResolveSingleton(isTypeof)
         UrlResolveSingleton.#changeExternalCall()
         return instance
     }
 
     resolve(namePath) {
-        if (namePath in this.#paths) {
-            return `${this.#urlBase}${this.#paths[namePath]}`
+        if (!(this.#isType(namePath, 'string'))) {
+            throw new IncorrectTypeError('namePath must be a string')
         }
-        throw new PathNotFoundError(`The path "${namePath}" not exists. Intent with paths: ${Object.keys(this.#paths)}`)
+        if (!(namePath in this.#paths)) {
+            throw new PathNotFoundError(`The path "${namePath}" not exists. Intent with paths: ${Object.keys(this.#paths)}`)
+        }
+        return `${this.#urlBase}${this.#paths[namePath]}`
     }
 }
