@@ -1,4 +1,10 @@
 <script setup>
+import { ref, computed } from 'vue'
+import useValidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+import Swal from 'sweetalert2'
+import { createHttpRequest } from '../../lib/httpRequest'
+
 const props = defineProps({
     componentInfo: {
         title: 'string',
@@ -13,9 +19,57 @@ const {
     titleButtonSubmit
 } = props.componentInfo
 
-const signUp = () => {
-    
+const signUpForm = ref({
+    form: {
+        email: null,
+        password: null
+    }
+})
+
+const rules = computed(() => {
+    return {
+        form: {
+            email: {
+                required,
+                email,
+            },
+            password: { required },
+        }
+    }
+})
+
+const $v = useValidate(rules, signUpForm)
+
+const validateState = (name) => {
+    const { $dirty, $error } = $v.value.form[name]
+    return $dirty ? !$error : null
 }
+
+const httpRequestSignUp = async (url, httpClient) => {
+    try {
+        $v.value.form.$touch()
+        if ($v.value.form.$error) {
+            return;
+        }
+        const body = { ...signUpForm.value.form }
+        const response = await httpClient.post(url, body)
+        if (response.status === 200) {
+            const { access, refresh } = response.data
+            localStorage.setItem('access', access)
+            localStorage.setItem('refresh', refresh)
+            console.log('ok')
+        }
+    } catch (err) {
+        Swal.fire({
+            icon: 'error',
+            title: 'La aplicación ha tenido un problema',
+            text: 'Ha ocurrido un problema con nuestro servidor.'
+        })
+    }
+}
+
+const signUpAction = createHttpRequest(httpRequestSignUp, 'signUp')
+
 </script>
 
 <template>
@@ -25,16 +79,29 @@ const signUp = () => {
             <div class="text-white-50"> {{ description }} </div>
         </div>
         <div class="ms-xl-4">
-            <form class="text-center text-white" @submit.prevent>
-                <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Correo electrónico" id="correo" name="email">
-                </div>
-                <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Contraseña" id="contrasenna" name="password">
-                </div>
-                <button class="btn btn-outline-light" id="button-newsletter" type="submit"> {{ titleButtonSubmit }}
+            <b-form class="text-center text-white">
+                <b-form-group class="mb-3">
+                    <b-form-input type="email" class="form-control" placeholder="Correo electrónico" id="correo"
+                        name="email" v-model="signUpForm.form.email" :state="validateState('email')"
+                        @input="$v.form.email.$touch()" aria-describedby="email-validation">
+                    </b-form-input>
+                    <b-form-invalid-feedback id="email-validation">
+                        <span class="text-dark" v-for="error in $v.form.email.$errors"> {{ error.$message }} </span>
+                    </b-form-invalid-feedback>
+                </b-form-group>
+                <b-form-group class="mb-3">
+                    <b-form-input type="password" class="form-control" placeholder="Contraseña" id="contrasenna"
+                        name="password" v-model="signUpForm.form.password" :state="validateState('password')"
+                        @input="$v.form.password.$touch()" aria-describedby="password-validation">
+                    </b-form-input>
+                    <b-form-invalid-feedback id="password-validation">
+                        <span class="text-dark" v-for="error in $v.form.password.$errors"> {{ error.$message }} </span>
+                    </b-form-invalid-feedback>
+                </b-form-group>
+                <button class="btn btn-outline-light" type="submit" @click.prevent="signUpAction">
+                    {{ titleButtonSubmit }}
                 </button>
-            </form>
+            </b-form>
         </div>
     </div>
 </template>
