@@ -27,38 +27,34 @@ const {
 } = toRefs(props)
 
 const signUpForm = ref({
-    form: {
-        email: null,
-        password: null
-    }
+    email: null,
+    password: null
 })
 
 const rules = computed(() => {
     return {
-        form: {
-            email: {
-                required,
-                email,
-            },
-            password: { required },
-        }
+        email: {
+            required,
+            email,
+        },
+        password: { required },
     }
 })
 
-const $v = useValidate(rules, signUpForm)
+const $v = useValidate(rules, signUpForm, { $lazy: true, $autoDirty: true, })
 
 const validateState = (name) => {
-    const { $dirty, $error } = $v.value.form[name]
+    const { $dirty, $error } = $v.value[name]
     return $dirty ? !$error : null
 }
 
 const httpRequestSignUp = async (url, httpClient) => {
     try {
-        $v.value.form.$touch()
-        if ($v.value.form.$error) {
+        await $v.value.$validate()
+        if ($v.value.$error) {
             return;
         }
-        const body = { ...signUpForm.value.form }
+        const body = { ...signUpForm.value }
         const response = await httpClient.post(url, body)
         if (response.status === 200) {
             const accessToken = response.data.access
@@ -86,24 +82,24 @@ const signUpAction = createHttpRequest(httpRequestSignUp, 'signUp')
             <div class="text-white-50"> {{ description }} </div>
         </div>
         <div class="ms-xl-4">
-            <b-form class="text-center text-white">
+            <b-form class="text-center text-white" @submit.prevent="">
                 <b-form-group class="mb-3">
                     <b-form-input type="email" class="form-control" placeholder="Correo electrónico" id="correo"
-                        name="email" v-model="signUpForm.form.email" :state="validateState('email')"
-                        @input="$v.form.email.$touch()" aria-describedby="email-validation">
+                        name="email" v-model="signUpForm.email" :state="validateState('email')"
+                        aria-describedby="email-validation">
                     </b-form-input>
                     <b-form-invalid-feedback id="email-validation">
-                        <span class="text-dark" v-for="error in $v.form.email.$errors" :key="error.$uid"> {{ error.$message
+                        <span class="text-dark" v-for="error in $v.email.$errors" :key="error.$uid"> {{ error.$message
                         }} </span>
                     </b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group class="mb-3">
                     <b-form-input type="password" class="form-control" placeholder="Contraseña" id="contrasenna"
-                        name="password" v-model="signUpForm.form.password" :state="validateState('password')"
-                        @input="$v.form.password.$touch()" aria-describedby="password-validation">
+                        name="password" v-model="signUpForm.password" :state="validateState('password')"
+                        aria-describedby="password-validation">
                     </b-form-input>
                     <b-form-invalid-feedback id="password-validation">
-                        <span class="text-dark" v-for="error in $v.form.password.$errors" :key="error.$uid"> {{
+                        <span class="text-dark" v-for="error in $v.password.$errors" :key="error.$uid"> {{
                             error.$message }} </span>
                     </b-form-invalid-feedback>
                 </b-form-group>
