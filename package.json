@@ -16,8 +16,10 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "bootstrap-vue": "^2.23.1",
+    "jwt-decode": "^3.1.2",
     "sweetalert2": "^11.7.20",
     "vue": "^3.3.4",
+    "vue-props-validation": "^0.1.1",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
