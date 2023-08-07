@@ -7,15 +7,11 @@ import { NotThereIsUrlError } from './Errors'
 const urlResolve = UrlResolveSingleton.getInstance()
 
 const refreshToken = async (url, httpClient, nameRefreshTokenItem, nameAccessTokenItem) => {
-    try {
-        const refreshTokenData = { refresh: localStorage.getItem(nameRefreshTokenItem) }
-        const response = await httpClient.post(url, refreshTokenData)
-        if (response.status === 200) {
-            const accessToken = response.data.access
-            localStorage.setItem(nameAccessTokenItem, accessToken)
-        } 
-    } catch (error) {
-        throw error
+    const refreshTokenData = { refresh: localStorage.getItem(nameRefreshTokenItem) }
+    const response = await httpClient.post(url, refreshTokenData)
+    if (response.status === 200) {
+        const accessToken = response.data.access
+        localStorage.setItem(nameAccessTokenItem, accessToken)
     }
 }
 
@@ -38,7 +34,10 @@ const initCreateHttpRequest = (urlResolve, isType, httpClient, refreshToken) => 
                     await httpRequest(urlHttpRequest, httpClient)
                 }
                 catch (err) {
-                    refreshToken()
+                    const nameRefreshTokenItem = 'refresh'
+                    const nameAccessTokenItem = 'access'
+                    const urlRefreshToken = urlResolve.resolve(nameRefreshTokenItem)
+                    refreshToken(urlRefreshToken, httpClient, nameRefreshTokenItem, nameAccessTokenItem)
                     await httpRequest(urlHttpRequest, httpClient)
                 }
             }

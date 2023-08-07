@@ -1,46 +1,62 @@
 <script setup>
-const props = defineProps({
-    classInfo: {
-        containerClass: 'string',
-        imgClass: 'string',
-        titleClass: 'string',
-        descriptionClass: 'string'
-    },
-    componentInfo: {
-        autorImg: 'string',
-        nombre: 'string',
-        description: 'string',
-    }
-})
+import { toRefs } from 'vue'
 
-const {
-    containerClass,
-    imgClass,
-    titleClass,
-    descriptionClass
-} = props.classInfo
+const props = defineProps({
+    autorImg: {
+        type: String,
+        required: true,
+    },
+    nombre: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    containerClass: {
+        type: String,
+        required: true,
+    },
+    imgClass: {
+        type: String,
+        required: true,
+    },
+    titleClass: {
+        type: String,
+        required: true,
+    },
+    descriptionClass: {
+        type: String,
+        required: true,
+    },
+})
 
 const {
     autorImg,
     nombre,
-    description
-} = props.componentInfo
+    description,
+    containerClass,
+    imgClass,
+    titleClass,
+    descriptionClass,
+} = toRefs(props)
 
 const containerDiv = {
-    class: containerClass
+    class: containerClass.value,
 }
 
 const img = {
-    class: imgClass,
-    src: autorImg
+    class: imgClass.value,
+    src: autorImg.value,
 }
 
 const h5 = {
-    class: titleClass
+    class: titleClass.value,
 }
 
 const div = {
-    class: descriptionClass
+    class: descriptionClass.value,
 }
 </script>
 

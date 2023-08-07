@@ -1,41 +1,51 @@
 <script setup>
+import { toRefs } from 'vue'
+
 const props = defineProps({
-    classInfo: {
-        titleClass: 'string',
-        descriptionClass: 'string',
-        iconClass: 'string'
+    title: {
+        type: String,
+        required: true,
     },
-    componentInfo: {
-        title: 'string',
-        description: 'string',
+    description: {
+        type: String,
+        required: true,
+    },
+    titleClass: {
+        type: String,
+        default: null,
+    },
+    descriptionClass: {
+        type: String,
+        default: null,
+    },
+    iconClass: {
+        type: String,
+        required: true,
     }
 })
 
 const {
+    title,
+    description,
     titleClass,
     descriptionClass,
-    iconClass
-} = props.classInfo
-
-const {
-    title,
-    description
-} = props.componentInfo
+    iconClass,
+} = toRefs(props)
 
 const div = {
     class: 'feature bg-primary bg-gradient text-white rounded-3 mb-3'
 }
 
 const icon = {
-    class: iconClass
+    class: iconClass.value
 }
 
 const h2 = {
-    class: [ 'h5', titleClass ]
+    class: ['h5', titleClass.value]
 }
 
 const p = {
-    class: [ 'mb-0', descriptionClass ]
+    class: ['mb-0', descriptionClass.value]
 }
 
 </script>

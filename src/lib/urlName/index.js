@@ -6,4 +6,4 @@ export const
     urlSignUpName = 'home',
     urlContactName = 'contacto',
     urlCharacteristicsName = 'home',
-    urlLogoutName = 'home'
+    urlLogoutName = 'logout'

@@ -1,12 +1,10 @@
 <script setup>
-import MembersSection from '../components/sections/contact/Members.vue'
-import ContactSection from '../components/sections/contact/Contact.vue';
+import MembersSection from '../components/sections/contact/MembersSection.vue'
+import ContactSection from '../components/sections/contact/ContactSection.vue';
 
 const membersSection = {
-    componentInfo: {
-        title: 'Contacto',
-        description: 'Aplicación desarrollada para el ramo "Taller de proyectos web en python'
-    }
+    title: 'Contacto',
+    description: 'Aplicación desarrollada para el ramo "Taller de proyectos web en python'
 }
 </script>
 

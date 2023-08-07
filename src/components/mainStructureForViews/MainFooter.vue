@@ -2,7 +2,7 @@
     import { RouterLink } from 'vue-router'
     import { urlContactName } from '../../lib/urlName';
 
-    const toContact = { name: urlContactName }
+    const toContact = { name: urlContactName, }
 </script>
 
 <template>

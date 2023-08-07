@@ -1,30 +1,59 @@
 <script setup>
+import { toRefs } from 'vue'
 import { RouterLink } from 'vue-router'
-import { UrlResolveSingleton } from '../../lib/urlResolve'
+import { objectValidator } from 'vue-props-validation'
 
 const props = defineProps({
-    componentInfo: {
-        signInInfo: {
-            title: 'string',
-            description: 'string',
-            url: 'string',
-            titleButton: 'string'
-        },
-        signUpInfo: {
-            title: 'string',
-            description: 'string',
-            url: 'Object',
-            titleButton: 'string'
-        }
+    signInInfo: {
+        type: Object,
+        required: true,
+        validator: objectValidator({
+            title: {
+                type: String,
+                required: true,
+            },
+            description: {
+                type: String,
+                required: true,
+            },
+            url: {
+                type: String,
+                required: true,
+            },
+            titleButton: {
+                type: String,
+                required: true,
+            },
+        })
+    },
+    signUpInfo: {
+        type: Object,
+        required: true,
+        validator: objectValidator({
+            title: {
+                type: String,
+                required: true,
+            },
+            description: {
+                type: String,
+                required: true,
+            },
+            url: {
+                type: Object,
+                required: true,
+            },
+            titleButton: {
+                type: String,
+                required: true,
+            },
+        })
     }
 })
 
 const {
     signInInfo,
-    signUpInfo
-} = props.componentInfo
-
-const urlResolve = UrlResolveSingleton.getInstance()
+    signUpInfo,
+} = toRefs(props)
 </script>
 
 <template>

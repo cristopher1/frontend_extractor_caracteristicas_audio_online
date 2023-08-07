@@ -1,23 +1,30 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { toRefs, ref, computed } from 'vue'
 import useValidate from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 import Swal from 'sweetalert2'
 import { createHttpRequest } from '../../lib/httpRequest'
 
 const props = defineProps({
-    componentInfo: {
-        title: 'string',
-        description: 'string',
-        titleButtonSubmit: 'string'
+    title: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    titleButtonSubmit: {
+        type: String,
+        required: true,
     }
 })
 
 const {
     title,
     description,
-    titleButtonSubmit
-} = props.componentInfo
+    titleButtonSubmit,
+} = toRefs(props)
 
 const signUpForm = ref({
     form: {
@@ -54,10 +61,10 @@ const httpRequestSignUp = async (url, httpClient) => {
         const body = { ...signUpForm.value.form }
         const response = await httpClient.post(url, body)
         if (response.status === 200) {
-            const { access, refresh } = response.data
-            localStorage.setItem('access', access)
-            localStorage.setItem('refresh', refresh)
-            console.log('ok')
+            const accessToken = response.data.access
+            const refreshToken = response.data.refresh
+            localStorage.setItem('access', accessToken)
+            localStorage.setItem('refresh', refreshToken)
         }
     } catch (err) {
         Swal.fire({
@@ -86,7 +93,8 @@ const signUpAction = createHttpRequest(httpRequestSignUp, 'signUp')
                         @input="$v.form.email.$touch()" aria-describedby="email-validation">
                     </b-form-input>
                     <b-form-invalid-feedback id="email-validation">
-                        <span class="text-dark" v-for="error in $v.form.email.$errors"> {{ error.$message }} </span>
+                        <span class="text-dark" v-for="error in $v.form.email.$errors" :key="error.$uid"> {{ error.$message
+                        }} </span>
                     </b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group class="mb-3">
@@ -95,7 +103,8 @@ const signUpAction = createHttpRequest(httpRequestSignUp, 'signUp')
                         @input="$v.form.password.$touch()" aria-describedby="password-validation">
                     </b-form-input>
                     <b-form-invalid-feedback id="password-validation">
-                        <span class="text-dark" v-for="error in $v.form.password.$errors"> {{ error.$message }} </span>
+                        <span class="text-dark" v-for="error in $v.form.password.$errors" :key="error.$uid"> {{
+                            error.$message }} </span>
                     </b-form-invalid-feedback>
                 </b-form-group>
                 <button class="btn btn-outline-light" type="submit" @click.prevent="signUpAction">

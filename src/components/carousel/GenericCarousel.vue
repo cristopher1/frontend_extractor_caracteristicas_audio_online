@@ -1,30 +1,51 @@
 <script setup>
-import { defineAsyncComponent } from 'vue'
-import Indicator from './Indicator.vue'
-import ControlButton from './ControlButton.vue'
+import { toRefs, defineAsyncComponent } from 'vue'
+import CarouselIndicator from './CarouselIndicator.vue'
+import CarouselControl from './CarouselControl.vue'
 
 const props = defineProps({
-    classInfo: {
-        carouselClass: 'string',
-        colClass: 'string'
+    id: {
+        type: String,
+        required: true,
     },
-    componentInfo: {
-        id: 'string',
-        pathDirectoryCarouselItem: 'string',
-        nameFileCarouselItem: 'string',
-        data: 'Array',
-        dataBsInterval: 'int',
-        nCols: 'int',
-        withIndicators: 'bool',
-        withCarouselControl: 'bool',
-        withRows: 'bool'
+    pathDirectoryCarouselItem: {
+        type: String,
+        required: true,
+    },
+    nameFileCarouselItem: {
+        type: String,
+        required: true,
+    },
+    data: {
+        type: Array,
+        required: true,
+    },
+    dataBsInterval: {
+        type: Number,
+        required: true,
+    },
+    nCols: {
+        type: Number,
+        default: 2,
+    },
+    withIndicators: {
+        type: Boolean,
+    },
+    withCarouselControl: {
+        type: Boolean,
+    },
+    withRows: {
+        type: Boolean,
+    },
+    carouselClass: {
+        type: String,
+        default: null,
+    },
+    colClass: {
+        type: String,
+        dafault: null,
     }
 })
-
-const {
-    carouselClass,
-    colClass
-} = props.classInfo
 
 const {
     id,
@@ -35,8 +56,10 @@ const {
     nCols,
     withIndicators,
     withCarouselControl,
-    withRows
-} = props.componentInfo
+    withRows,
+    carouselClass,
+    colClass,
+} = toRefs(props)
 
 const calculateNSlide = (withRows, nItems, nCols) => (withRows) ? Math.ceil(nItems / nCols) : nItems
 
@@ -56,21 +79,21 @@ const obtainItem = (data, n, ...args) => {
 }
 
 const carouselItem = defineAsyncComponent(() => {
-    return import(`../${pathDirectoryCarouselItem}/${nameFileCarouselItem}.vue`)
+    return import(`../${pathDirectoryCarouselItem.value}/${nameFileCarouselItem.value}.vue`)
 })
 
 const containerDiv = {
-    'id': id,
-    'class': ["carousel carousel-dark slide", carouselClass],
+    'id': id.value,
+    'class': ["carousel carousel-dark slide", carouselClass.value],
     'data-bs-ride': "carousel"
 }
 
 const carouselInner = {
-    'data-bs-interval': dataBsInterval
+    'data-bs-interval': dataBsInterval.value
 }
 
 const row = {
-    class: colClass
+    class: colClass.value
 }
 
 const controlSlides = ['prev', 'next']
@@ -80,21 +103,19 @@ const controlSlides = ['prev', 'next']
 <template>
     <div v-if="nSlides = calculateNSlide(withRows, data.length, nCols)" v-bind="containerDiv">
         <div class="carousel-indicators" v-if="withIndicators">
-            <Indicator v-for="n in nSlides" v-bind="{
+            <CarouselIndicator v-for="n in nSlides" :key="n - 1" v-bind="{
                 class: { active: isActive(n) },
-                componentInfo: {
-                    carouselId: id,
-                    indexSlide: n - 1,
-                    ariaCurrent: isAriaCurrent(n),
-                    ariaLabel: `Slide ${n - 1}`
-                }
+                carouselId: id,
+                indexSlide: n - 1,
+                ariaCurrent: isAriaCurrent(n),
+                ariaLabel: `Slide ${n - 1}`
             }" />
         </div>
         <div class="carousel-inner">
-            <div v-for="n in nSlides" class="carousel-item" :class="{ active: isActive(n) }"
+            <div v-for="n in nSlides" :key="n" class="carousel-item" :class="{ active: isActive(n) }"
                 v-bind="carouselInner">
                 <div v-if="withRows" class="row pb-5 pt-5 px-5 py-5">
-                    <div v-for="nCol in nCols" v-bind="row">
+                    <div v-for="nCol in nCols" :key="nCol" v-bind="row">
                         <carouselItem v-if="item = obtainItem(data, n - 1, nCol - 1, nCols)" v-bind="item" />
                     </div>
                 </div>
@@ -104,12 +125,10 @@ const controlSlides = ['prev', 'next']
             </div>
         </div>
         <template v-if="withCarouselControl">
-            <ControlButton v-for="controlSlide in controlSlides" v-bind="{
-                componentInfo: {
-                    carouselId: id,
-                    carouselControl: controlSlide,
-                    dataBsSlide: controlSlide,
-                }
+            <CarouselControl v-for="controlSlide in controlSlides" :key="controlSlide" v-bind="{
+                carouselId: id,
+                carouselControl: controlSlide,
+                dataBsSlide: controlSlide,
             }" />
         </template>
     </div>

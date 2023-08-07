@@ -1,31 +1,32 @@
 <script setup>
+import { toRefs } from 'vue'
 import DeveloperInfo from '../../imgs/DeveloperInfo.vue'
 import { autorImg } from '../../../assets/img/views/contacto'
 
 const props = defineProps({
-    componentInfo: {
-        title: 'string',
-        description: 'string'
-    }
+    title: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
 })
 
 const {
     title,
-    description
-} = props.componentInfo
+    description,
+} = toRefs(props)
 
 const developerInfo = {
-    classInfo: {
-        containerClass: 'text-center',
-        imgClass: 'img-fluid rounded-circle mb-4 px-4',
-        titleClass: 'fw-bolder',
-        descriptionClass: 'fst-italic text-muted'
-    },
-    componentInfo: {
-        autorImg,
-        nombre: 'Cristopher Luis Jiménez Meza',
-        description: 'Desarrollador • Equipo 11'
-    }
+    autorImg,
+    nombre: 'Cristopher Luis Jiménez Meza',
+    description: 'Desarrollador • Equipo 11',
+    containerClass: 'text-center',
+    imgClass: 'img-fluid rounded-circle mb-4 px-4',
+    titleClass: 'fw-bolder',
+    descriptionClass: 'fst-italic text-muted',
 }
 </script>
 
