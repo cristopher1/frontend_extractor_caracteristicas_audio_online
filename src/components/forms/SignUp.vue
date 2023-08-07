@@ -1,9 +1,8 @@
 <script setup>
-import { toRefs, ref, computed } from 'vue'
+import { toRefs, ref, computed, inject } from 'vue'
 import useValidate from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 import Swal from 'sweetalert2'
-import { createHttpRequest } from '../../lib/httpRequest'
 
 const props = defineProps({
     title: {
@@ -25,6 +24,9 @@ const {
     description,
     titleButtonSubmit,
 } = toRefs(props)
+
+const axios = inject('axios')
+const externalUrls = inject('externalUrls')
 
 const signUpForm = ref({
     email: null,
@@ -48,14 +50,15 @@ const validateState = (name) => {
     return $dirty ? !$error : null
 }
 
-const httpRequestSignUp = async (url, httpClient) => {
+const signUpAction = async () => {
     try {
         await $v.value.$validate()
         if ($v.value.$error) {
             return;
         }
+        const url = externalUrls.apiExtractorCaracteristicasAudio.signUp
         const body = { ...signUpForm.value }
-        const response = await httpClient.post(url, body)
+        const response = await axios.post(url, body, { skipAuthRefresh: true })
         if (response.status === 200) {
             const accessToken = response.data.access
             const refreshToken = response.data.refresh
@@ -70,8 +73,6 @@ const httpRequestSignUp = async (url, httpClient) => {
         })
     }
 }
-
-const signUpAction = createHttpRequest(httpRequestSignUp, 'signUp')
 
 </script>
 
