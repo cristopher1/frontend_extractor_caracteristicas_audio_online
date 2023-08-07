@@ -82,7 +82,7 @@ const signUpAction = createHttpRequest(httpRequestSignUp, 'signUp')
             <div class="text-white-50"> {{ description }} </div>
         </div>
         <div class="ms-xl-4">
-            <b-form class="text-center text-white" @submit.prevent="">
+            <b-form class="text-center text-white">
                 <b-form-group class="mb-3">
                     <b-form-input type="email" class="form-control" placeholder="Correo electrónico" id="correo"
                         name="email" v-model="signUpForm.email" :state="validateState('email')"
