@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { urlApp } from '../urlApp'
 import HomeView from '../views/HomeView.vue'
 
 const logout = (to, from) => {
@@ -11,28 +12,28 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
+      path: urlApp.path.home,
+      name: urlApp.name.home,
       component: HomeView
     },
     {
-      path: '/contacto',
-      name: 'contacto',
+      path: urlApp.path.contact,
+      name: urlApp.name.contact,
       component: () => import('../views/ContactoView.vue')
     },
     {
-      path: '/informacion',
-      name: 'informacion',
+      path: urlApp.path.information,
+      name: urlApp.name.information,
       component: () => import('../views/DescripcionView.vue')
     },
     {
-      path: '/login',
-      name: 'login',
+      path: urlApp.path.login,
+      name: urlApp.name.login,
       component: () => import('../views/LoginView.vue')
     },
     {
-      path: '/logout',
-      name: 'logout',
+      path: urlApp.path.logout,
+      name: urlApp.name.logout,
       beforeEnter: [logout]
     }
   ],
