@@ -25,8 +25,6 @@ const {
     titleButtonSubmit,
 } = toRefs(props)
 
-const api = inject('api')
-
 const signUpForm = ref({
     email: null,
     password: null
@@ -49,6 +47,8 @@ const validateState = (name) => {
     return $dirty ? !$error : null
 }
 
+const apis = inject('apis')
+
 const signUpAction = async () => {
     try {
         await $v.value.$validate()
@@ -56,12 +56,12 @@ const signUpAction = async () => {
             return;
         }
         const body = { ...signUpForm.value }
-        const response = await api.extractorCaracteristicas.auth.signUp({ body })
+        const response = await apis.extractorCaracteristicas.request.auth.signUp({ body })
         if (response.status === 200) {
             const accessToken = response.data.access
             const refreshToken = response.data.refresh
-            localStorage.setItem('access', accessToken)
-            localStorage.setItem('refresh', refreshToken)
+            localStorage.setItem(apis.extractorCaracteristicas.storage.accessTokenItem.name, accessToken)
+            localStorage.setItem(apis.extractorCaracteristicas.storage.refreshTokenItem.name, refreshToken)
         }
     } catch (err) {
         Swal.fire({

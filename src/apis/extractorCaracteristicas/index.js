@@ -21,5 +21,7 @@ const auth = authentication.configurateHttpClient(axios, api)
 export const extractorCaracteristicas = {
     storage: api.storage,
     tokens: api.tokens,
-    auth,
+    request: {
+        auth
+    },
 }
