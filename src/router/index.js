@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { apis } from '../apis'
 import { urlApp } from '../urlApp'
 import HomeView from '../views/HomeView.vue'
 
 const logout = (to, from) => {
-  localStorage.removeItem('access')
-  localStorage.removeItem('refresh')
-  return { name: 'home' }
+  localStorage.removeItem(apis.extractorCaracteristicas.storage.accessTokenItem.name)
+  localStorage.removeItem(apis.extractorCaracteristicas.storage.refreshTokenItem.name)
+  return { name: urlApp.name.home }
 }
 
 const router = createRouter({
