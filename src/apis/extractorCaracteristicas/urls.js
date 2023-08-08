@@ -7,17 +7,13 @@ const {
     VITE_API_RECORDS
 } = import.meta.env
 
-export const urlFormat = (base, path) => `${base}/${path}`
+const urlFormat = (base, path) => `${base}/${path}`
 
-const URLS_API = {
+export const urls = {
     'base': VITE_API_URL_BASE,
     'login': urlFormat(VITE_API_URL_BASE, VITE_API_TOKEN),
     'refresh': urlFormat(VITE_API_URL_BASE, VITE_API_TOKEN_REFRESH),
     'signUp': urlFormat(VITE_API_URL_BASE, VITE_API_SIGN_UP),
     'characteristics': urlFormat(VITE_API_URL_BASE, VITE_API_CHARACTERISTICS),
     'records': urlFormat(VITE_API_URL_BASE, VITE_API_RECORDS),
-}
-
-export const URLS = {
-    apiExtractorCaracteristicasAudio: URLS_API,
 }

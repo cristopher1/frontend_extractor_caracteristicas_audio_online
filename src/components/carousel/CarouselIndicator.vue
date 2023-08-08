@@ -12,7 +12,6 @@ const props = defineProps({
     },
     ariaCurrent: {
         type: Boolean,
-        required: true,
     },
     ariaLabel: {
         type: String,

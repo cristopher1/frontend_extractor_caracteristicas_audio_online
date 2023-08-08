@@ -25,8 +25,7 @@ const {
     titleButtonSubmit,
 } = toRefs(props)
 
-const axios = inject('axios')
-const externalUrls = inject('externalUrls')
+const apis = inject('apis')
 
 const signUpForm = ref({
     email: null,
@@ -56,9 +55,8 @@ const signUpAction = async () => {
         if ($v.value.$error) {
             return;
         }
-        const url = externalUrls.apiExtractorCaracteristicasAudio.signUp
         const body = { ...signUpForm.value }
-        const response = await axios.post(url, body, { skipAuthRefresh: true })
+        const response = await apis.extractorCaracteristicas.auth.signUp({ body })
         if (response.status === 200) {
             const accessToken = response.data.access
             const refreshToken = response.data.refresh
@@ -66,6 +64,7 @@ const signUpAction = async () => {
             localStorage.setItem('refresh', refreshToken)
         }
     } catch (err) {
+        console.log(err)
         Swal.fire({
             icon: 'error',
             title: 'La aplicación ha tenido un problema',
@@ -73,7 +72,6 @@ const signUpAction = async () => {
         })
     }
 }
-
 </script>
 
 <template>
