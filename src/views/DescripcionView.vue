@@ -1,8 +1,10 @@
 <script setup>
-    import { RouterLink } from 'vue-router'
-    import { urlSignInName } from '../lib/urlName'
+import { inject } from 'vue'
+import { RouterLink } from 'vue-router'
 
-    const toSignIn = { name: urlSignInName }
+const urlApp = inject('urlApp')
+
+const toSignIn = { name: urlApp.name.signIn }
 </script>
 
 <template>
@@ -26,7 +28,7 @@
                         <h4> ¿De qué trata este proyecto? </h4>
                     </div>
                     <p class="text-justify">
-                        Trata sobre el proceso de extracción de características de archivos de audios. 
+                        Trata sobre el proceso de extracción de características de archivos de audios.
                         Pensado en aquellas personas que necesitan entrenar redes neuronales convolucionales (CNNs)
                         clasificadoras de audios, basadas por ejemplo en imagénes de espectrogramas o directamente
                         usando las matrices de distribución de energía,pero no tienen el conocimiento o herramientas
@@ -41,7 +43,7 @@
                 </div>
                 <div class="col-lg">
                     <h4 class="pt-3 pb-3"> ¿En qué consiste? </h4>
-                    <p class="text-justify"> 
+                    <p class="text-justify">
                         Consiste en una aplicación web, donde los usuarios deberán registrarse en ella para acceder a las
                         funcionalidades. Este, podrá elegir algunas características a extraer, por ejemplo: espectrogramas,
                         espectrogramas de MEL, amplitud o coeficientes cepstrales de MEL (MFCCs). Luego de ello, deberá
@@ -55,13 +57,13 @@
             <div class="row">
                 <div class="col-lg">
                     <h4 class="pt-3 pb-3"> Navegación</h4>
-                    <p class="text-justify"> 
+                    <p class="text-justify">
                         La barra de navegación de la aplicación, contiene tres opciones:
                     </p>
                     <ol>
                         <li> Inicio: Redirige a la vista de inicio de la página. </li>
                         <li> Descripción: Corresponde a esta sección. </li>
-                        <li> 
+                        <li>
                             Características: Esta sección muestra los tipos de características que
                             pueden ser extraidos de un archivo de audio.
                         </li>
@@ -93,5 +95,5 @@
 </template>
 
 <style scoped>
-    @import '../assets/css/views/description.css';
+@import '../assets/css/views/description.css';
 </style>

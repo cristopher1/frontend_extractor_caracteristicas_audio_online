@@ -1,9 +1,11 @@
 <script setup>
+import { inject } from 'vue'
 import HomeHeader from '../components/headers/HomeHeader.vue';
 import CharacteristicsResultsSection from '../components/sections/home/CharacteristicsResultsSection.vue'
 import SignUpSection from '../components/sections/home/SignUpSection.vue';
 import FeaturesSection from '../components/sections/home/FeaturesSection.vue';
-import { urlInformationName, urlSignInName } from '../lib/urlName'
+
+const urlApp = inject('urlApp')
 
 const homeHeader = {
   title: "Extractor de características de audios online",
@@ -12,13 +14,13 @@ const homeHeader = {
   data: [
     {
       id: 1,
-      url: { name: urlSignInName, },
+      url: { name: urlApp.name.signIn, },
       message: 'Comenzar',
       linkClass: 'btn btn-primary btn-lg px-4 me-sm-3',
     },
     {
       id: 2,
-      url: { name: urlInformationName, },
+      url: { name: urlApp.name.information, },
       message: 'Ver más',
       linkClass: 'btn btn-outline-light btn-lg px-4',
     },

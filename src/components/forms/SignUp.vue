@@ -25,7 +25,7 @@ const {
     titleButtonSubmit,
 } = toRefs(props)
 
-const apis = inject('apis')
+const api = inject('api')
 
 const signUpForm = ref({
     email: null,
@@ -56,7 +56,7 @@ const signUpAction = async () => {
             return;
         }
         const body = { ...signUpForm.value }
-        const response = await apis.extractorCaracteristicas.auth.signUp({ body })
+        const response = await api.extractorCaracteristicas.auth.signUp({ body })
         if (response.status === 200) {
             const accessToken = response.data.access
             const refreshToken = response.data.refresh
@@ -64,7 +64,6 @@ const signUpAction = async () => {
             localStorage.setItem('refresh', refreshToken)
         }
     } catch (err) {
-        console.log(err)
         Swal.fire({
             icon: 'error',
             title: 'La aplicación ha tenido un problema',

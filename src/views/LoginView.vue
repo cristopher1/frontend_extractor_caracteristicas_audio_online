@@ -1,6 +1,8 @@
 <script setup>
+import { inject } from 'vue'
 import SignIn from '../components/forms/SignIn.vue';
-import { urlSignUpName } from '../lib/urlName'
+
+const urlApp = inject('urlApp')
 
 const signIn = {
     signInInfo: {
@@ -12,7 +14,7 @@ const signIn = {
     signUpInfo: {
         title: '¿Estás registrado?',
         description: 'Crea una cuenta e inicia sesión para acceder a las funcionalidades de la aplicación.',
-        url: { name: urlSignUpName, hash: '#sign-up', },
+        url: { name: urlApp.name.signUp, hash: urlApp.hash.signUp, },
         titleButton: 'Registrarse ahora.',
     },
 }

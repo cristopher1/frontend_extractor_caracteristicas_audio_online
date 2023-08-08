@@ -1,27 +1,29 @@
 <script setup>
-import jwt_decode from 'jwt-decode'
+import { inject } from 'vue'
 import { RouterLink } from 'vue-router'
-import { urlHomeName, urlSignUpName, urlContactName, urlCharacteristicsName, urlLogoutName } from '../../lib/urlName'
+import jwt_decode from 'jwt-decode'
+
+const urlApp = inject('urlApp')
 
 const home = {
     message: 'Inicio',
-    url: { name: urlHomeName, }
+    url: { name: urlApp.name.home, }
 }
 const signUp = {
     message: 'Registrarse',
-    url: { name: urlSignUpName, hash: '#sign-up', }
+    url: { name: urlApp.name.signUp, hash: urlApp.hash.singUp, }
 }
 const contact = {
     message: 'Contacto',
-    url: { name: urlContactName, }
+    url: { name: urlApp.name.contact, }
 }
 const characteristics = {
     message: 'Características',
-    url: { name: urlCharacteristicsName, }
+    url: { name: urlApp.name.characteristics, }
 }
 const logout = {
     message: 'Cerrar sesión',
-    url: { name: urlLogoutName, }
+    url: { name: urlApp.name.logout, }
 }
 
 const thereIsUser = () => {
