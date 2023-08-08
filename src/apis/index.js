@@ -1,5 +1,5 @@
 import { extractorCaracteristicas } from "./extractorCaracteristicas"
 
-export const apis = {
+export const api = {
     extractorCaracteristicas,
 }

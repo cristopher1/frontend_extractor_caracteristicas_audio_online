@@ -12,7 +12,7 @@ const urlFormat = (base, path) => `${base}/${path}`
 export const urls = {
     'base': VITE_API_URL_BASE,
     'login': urlFormat(VITE_API_URL_BASE, VITE_API_TOKEN),
-    'refresh': urlFormat(VITE_API_URL_BASE, VITE_API_TOKEN_REFRESH),
+    'refreshToken': urlFormat(VITE_API_URL_BASE, VITE_API_TOKEN_REFRESH),
     'signUp': urlFormat(VITE_API_URL_BASE, VITE_API_SIGN_UP),
     'characteristics': urlFormat(VITE_API_URL_BASE, VITE_API_CHARACTERISTICS),
     'records': urlFormat(VITE_API_URL_BASE, VITE_API_RECORDS),

@@ -1,8 +1,8 @@
 const authentication = {
-    configurateHttpClient: (httpClient, urls) => ({
+    configurateHttpClient: (httpClient, api) => ({
         signUp: async (args) => { 
             const { body } = args
-            return await httpClient.post(urls.signUp, body, { skipAuthRefresh: true })
+            return await httpClient.post(api.urls.signUp, body, { skipAuthRefresh: true })
         }
     })
 }
