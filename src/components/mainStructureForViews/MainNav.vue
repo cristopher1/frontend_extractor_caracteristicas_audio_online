@@ -12,7 +12,7 @@ const home = {
 }
 const signUp = {
     message: 'Registrarse',
-    url: { name: urlApp.name.signUp, hash: urlApp.hash.singUp, }
+    url: { name: urlApp.name.signUp, hash: urlApp.hash.signUp, }
 }
 const contact = {
     message: 'Contacto',
