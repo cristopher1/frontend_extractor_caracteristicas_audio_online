@@ -9,23 +9,23 @@ const reactiveLocalStorage = inject('reactiveLocalStorage')
 
 const home = {
     message: 'Inicio',
-    url: { name: urlApp.name.home, }
+    url: { name: urlApp.home.name, }
 }
 const signUp = {
     message: 'Registrarse',
-    url: { name: urlApp.name.signUp, hash: urlApp.hash.signUp, }
+    url: { name: urlApp.signUp.anme, hash: urlApp.signUp.hash, }
 }
 const contact = {
     message: 'Contacto',
-    url: { name: urlApp.name.contact, }
+    url: { name: urlApp.contact.name, }
 }
 const characteristics = {
     message: 'Características',
-    url: { name: urlApp.name.characteristics, }
+    url: { name: urlApp.characteristics.name, }
 }
 const logout = {
     message: 'Cerrar sesión',
-    url: { name: urlApp.name.logout, }
+    url: { name: urlApp.logout.name, }
 }
 
 const thereIsUser = computed(() => {

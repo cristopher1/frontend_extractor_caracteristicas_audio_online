@@ -1,5 +1,6 @@
 <script setup>
 import { toRefs, ref, computed, inject } from 'vue'
+import { useRouter } from 'vue-router'
 import useValidate from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 import Swal from 'sweetalert2'
@@ -27,7 +28,7 @@ const {
 
 const signUpForm = ref({
     email: null,
-    password: null
+    password: null,
 })
 
 const rules = computed(() => {
@@ -48,7 +49,10 @@ const validateState = (name) => {
 }
 
 const apis = inject('apis')
+const urlApp = inject('urlApp')
 const reactiveLocalStorage = inject('reactiveLocalStorage')
+
+const router = useRouter()
 
 const signUpAction = async () => {
     try {
@@ -59,16 +63,19 @@ const signUpAction = async () => {
         const body = { ...signUpForm.value }
         const response = await apis.extractorCaracteristicas.request.auth.signUp({ body })
         if (response.status === 200) {
-            const accessToken = response.data.access
-            const refreshToken = response.data.refresh
+            const accessToken = response.data[apis.extractorCaracteristicas.tokens.accessToken.name]
+            const refreshToken = response.data[apis.extractorCaracteristicas.tokens.refreshToken.name]
             reactiveLocalStorage.setItem(apis.extractorCaracteristicas.storage.accessTokenItem.name, accessToken)
             reactiveLocalStorage.setItem(apis.extractorCaracteristicas.storage.refreshTokenItem.name, refreshToken)
+            router.push({
+                name: urlApp.principal.name,
+            })
         }
     } catch (err) {
         Swal.fire({
             icon: 'error',
             title: 'La aplicación ha tenido un problema',
-            text: 'Ha ocurrido un problema con nuestro servidor.'
+            text: 'Ha ocurrido un problema con nuestro servidor.',
         })
     }
 }
@@ -102,7 +109,7 @@ const signUpAction = async () => {
                             error.$message }} </span>
                     </b-form-invalid-feedback>
                 </b-form-group>
-                <button class="btn btn-outline-light" type="submit" @click.prevent="signUpAction">
+                <button class="btn btn-outline-light" type="button" @click="signUpAction">
                     {{ titleButtonSubmit }}
                 </button>
             </b-form>

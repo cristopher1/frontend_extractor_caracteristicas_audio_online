@@ -14,13 +14,13 @@ const homeHeader = {
   data: [
     {
       id: 1,
-      url: { name: urlApp.name.signIn, },
+      url: { name: urlApp.signIn.name, },
       message: 'Comenzar',
       linkClass: 'btn btn-primary btn-lg px-4 me-sm-3',
     },
     {
       id: 2,
-      url: { name: urlApp.name.information, },
+      url: { name: urlApp.information.name, },
       message: 'Ver más',
       linkClass: 'btn btn-outline-light btn-lg px-4',
     },

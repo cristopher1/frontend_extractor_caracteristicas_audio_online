@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 
 const urlApp = inject('urlApp')
 
-const toSignIn = { name: urlApp.name.signIn }
+const toSignIn = { name: urlApp.signIn.name }
 </script>
 
 <template>
@@ -95,5 +95,5 @@ const toSignIn = { name: urlApp.name.signIn }
 </template>
 
 <style scoped>
-@import '../assets/css/views/description.css';
+@import '../assets/css/views/descriptionView.css';
 </style>

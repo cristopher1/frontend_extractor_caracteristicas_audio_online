@@ -14,7 +14,7 @@ const signIn = {
     signUpInfo: {
         title: '¿Estás registrado?',
         description: 'Crea una cuenta e inicia sesión para acceder a las funcionalidades de la aplicación.',
-        url: { name: urlApp.name.signUp, hash: urlApp.hash.signUp, },
+        url: { name: urlApp.signUp.name, hash: urlApp.signUp.hash, },
         titleButton: 'Registrarse ahora.',
     },
 }

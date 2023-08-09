@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 
 const urlApp = inject('urlApp')
 
-const toContact = { name: urlApp.name.contact, }
+const toContact = { name: urlApp.contact.name, }
 </script>
 
 <template>

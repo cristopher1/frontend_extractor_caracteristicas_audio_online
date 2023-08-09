@@ -7,35 +7,40 @@ const obtainRouter = (reactiveLocalStorage) => {
   const logout = (to, from) => {
     reactiveLocalStorage.removeItem(apis.extractorCaracteristicas.storage.accessTokenItem.name)
     reactiveLocalStorage.removeItem(apis.extractorCaracteristicas.storage.refreshTokenItem.name)
-    return { name: urlApp.name.home }
+    return { name: urlApp.home.name }
   }
 
   return createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
       {
-        path: urlApp.path.home,
-        name: urlApp.name.home,
-        component: HomeView
+        path: urlApp.home.path,
+        name: urlApp.home.name,
+        component: HomeView,
       },
       {
-        path: urlApp.path.contact,
-        name: urlApp.name.contact,
-        component: () => import('../views/ContactoView.vue')
+        path: urlApp.contact.path,
+        name: urlApp.contact.name,
+        component: () => import('../views/ContactoView.vue'),
       },
       {
-        path: urlApp.path.information,
-        name: urlApp.name.information,
-        component: () => import('../views/DescripcionView.vue')
+        path: urlApp.information.path,
+        name: urlApp.information.name,
+        component: () => import('../views/DescripcionView.vue'),
       },
       {
-        path: urlApp.path.login,
-        name: urlApp.name.login,
-        component: () => import('../views/LoginView.vue')
+        path: urlApp.login.path,
+        name: urlApp.login.name,
+        component: () => import('../views/LoginView.vue'),
       },
       {
-        path: urlApp.path.logout,
-        name: urlApp.name.logout,
+        path: urlApp.principal.path,
+        name: urlApp.principal.name,
+        component: () => import('../views/PrincipalView.vue'),
+      },
+      {
+        path: urlApp.logout.path,
+        name: urlApp.logout.name,
         beforeEnter: [logout]
       }
     ],
