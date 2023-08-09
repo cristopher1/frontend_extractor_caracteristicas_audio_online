@@ -4,6 +4,7 @@ import { RouterLink } from 'vue-router'
 import jwt_decode from 'jwt-decode'
 
 const urlApp = inject('urlApp')
+const apis = inject('apis')
 const reactiveLocalStorage = inject('reactiveLocalStorage')
 
 const home = {
@@ -28,11 +29,11 @@ const logout = {
 }
 
 const thereIsUser = computed(() => {
-    return reactiveLocalStorage.getItem('access')
+    return reactiveLocalStorage.getItem(apis.extractorCaracteristicas.storage.accessTokenItem.name)
 })
 
 const obtainInfoUser = computed(() => {
-    const accessToken = reactiveLocalStorage.getItem('access')
+    const accessToken = reactiveLocalStorage.getItem(apis.extractorCaracteristicas.storage.accessTokenItem.name)
     if (accessToken) {
         return jwt_decode(accessToken).user_id
     }
