@@ -48,6 +48,7 @@ const validateState = (name) => {
 }
 
 const apis = inject('apis')
+const reactiveLocalStorage = inject('reactiveLocalStorage')
 
 const signUpAction = async () => {
     try {
@@ -60,8 +61,8 @@ const signUpAction = async () => {
         if (response.status === 200) {
             const accessToken = response.data.access
             const refreshToken = response.data.refresh
-            localStorage.setItem(apis.extractorCaracteristicas.storage.accessTokenItem.name, accessToken)
-            localStorage.setItem(apis.extractorCaracteristicas.storage.refreshTokenItem.name, refreshToken)
+            reactiveLocalStorage.setItem(apis.extractorCaracteristicas.storage.accessTokenItem.name, accessToken)
+            reactiveLocalStorage.setItem(apis.extractorCaracteristicas.storage.refreshTokenItem.name, refreshToken)
         }
     } catch (err) {
         Swal.fire({
