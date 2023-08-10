@@ -13,7 +13,7 @@ const home = {
 }
 const signUp = {
     message: 'Registrarse',
-    url: { name: urlApp.signUp.anme, hash: urlApp.signUp.hash, }
+    url: { name: urlApp.signUp.name, hash: urlApp.signUp.hash, }
 }
 const contact = {
     message: 'Contacto',
